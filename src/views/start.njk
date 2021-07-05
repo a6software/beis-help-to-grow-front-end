@@ -1,0 +1,13 @@
+{% extends "layout/base.njk" %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block content %}
+    <h1>start page here!</h1>
+
+    {{ govukButton({
+        href: '/eligibility/type-of-business',
+        isStartButton: true,
+        text: "Save and continue"
+    }) }}
+{% endblock %}
