@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+    node-app:
+        image: node:14-alpine
+        environment:
+            EXAMPLE: 'an example environment variable'
+        ports:
+            - 3001:3000
+        working_dir: /opt/app
+        volumes:
+            - ./:/opt/app:ro
+        command: npm run start:dev
