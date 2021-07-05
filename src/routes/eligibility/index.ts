@@ -3,6 +3,6 @@ import typeOfBusinessRouter from './type-of-business';
 
 const router = express.Router();
 
-router.get('/type-of-business', typeOfBusinessRouter);
+router.use('/type-of-business', typeOfBusinessRouter);
 
 export default router;

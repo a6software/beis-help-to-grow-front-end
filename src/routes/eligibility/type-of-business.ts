@@ -3,6 +3,6 @@ import typeOfBusinessController from '../../controllers/eligibility/type-of-busi
 
 const router = express.Router();
 
-router.get('/type-of-business', typeOfBusinessController.getTypeOfBusiness);
+router.get('/', typeOfBusinessController.getTypeOfBusiness);
 
 export default router;
