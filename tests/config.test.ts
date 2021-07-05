@@ -15,12 +15,12 @@ describe('config', () => {
     process.env = OLD_ENV; // Restore old environment
   });
 
-  test('will receive sane defaults', () => {
+  test('will receive sane defaults', async () => {
     delete process.env.PORT;
 
-    const conf = require('../src/config').default;
+    const conf = await import('../src/config');
 
-    expect(conf).toEqual({
+    expect(conf.default).toEqual({
       server: {
         port: 3000,
       },

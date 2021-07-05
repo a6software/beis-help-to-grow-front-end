@@ -1,7 +1,7 @@
 import request from 'supertest';
+import { Request, Response } from 'express';
 import app from '../../../src/app';
 import controller from '../../../src/controllers/eligibility/type-of-business';
-import { Request, Response } from 'express';
 
 describe('controllers/eligibility/type-of-business', () => {
   describe('getStartPage', () => {
