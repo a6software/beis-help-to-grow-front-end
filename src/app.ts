@@ -4,6 +4,7 @@ import pinoHttp from 'pino-http';
 import setupNunjucks from './lib/nunjucks/setup';
 import requestIdGenerator from './lib/request-id-generator';
 import routes from './routes';
+import config from './config';
 
 const app = express();
 app.use(
@@ -32,8 +33,10 @@ app.use(
   express.static(path.join(__dirname, '..', 'node_modules', 'govuk-frontend', 'govuk', 'all.js')),
 );
 
-// app.listen(config.server.port, () => {
-//   console.log(`⚡ ️[server]: Server is running at https://localhost:${config.server.port}`);
-// });
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(config.server.port, () => {
+    console.log(`⚡ ️[server]: Server is running at https://localhost:${config.server.port}`);
+  });
+}
 
 export default app;
