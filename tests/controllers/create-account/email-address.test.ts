@@ -1,13 +1,13 @@
 import request from 'supertest';
 import { Request, Response } from 'express';
 import app from '../../../src/app';
-import controller from '../../../src/controllers/eligibility/type-of-business';
+import controller from '../../../src/controllers/create-account/email-address';
 
-describe('controllers/eligibility/type-of-business', () => {
-  describe('getTypeOfBusiness', () => {
+describe('controllers/create-account/email-address', () => {
+  describe('getEmailAddress', () => {
     it('should be a valid route', () => {
       request(app)
-        .get('/eligibility/type-of-business')
+        .get('/create-account/email-address')
         .expect('Content-Type', 'text/html; charset=utf-8')
         .expect(200)
         .end((err) => {
@@ -21,9 +21,9 @@ describe('controllers/eligibility/type-of-business', () => {
         render: jest.fn(),
       } as unknown as Response;
 
-      controller.getTypeOfBusiness(mockReq, mockRes);
+      controller.getEmailAddress(mockReq, mockRes);
 
-      expect(mockRes.render).toHaveBeenCalledWith('eligibility/type-of-business');
+      expect(mockRes.render).toHaveBeenCalledWith('create-account/email-address');
     });
   });
 });
