@@ -2,7 +2,7 @@
 
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/input/macro.njk" import govukInput %}
-
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 {#{% from "error-summary/macro.njk" import govukErrorSummary %}#}
 
 {% block pageTitle %}
@@ -26,6 +26,16 @@
 {#            ]#}
 {#          }) }}#}
 {#        {% endif %}#}
+
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: [
+            {
+              text: "Invalid email addres",
+              href: ""
+            }
+          ]
+        }) }}
 
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">

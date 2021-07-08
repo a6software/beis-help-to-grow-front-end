@@ -1,8 +1,8 @@
 {% extends "layout/base.njk" %}
 
 {% from "govuk/components/button/macro.njk" import govukButton %}
-{% from "govuk/components/input/macro.njk" import govukInput %}
 {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 
 {% block pageTitle %}
   T&Cs + Privacy consent
@@ -12,6 +12,17 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       {# <form class="form" action="" method="post"> #}
+      
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: [
+            {
+              text: "You need to accept the consent before continuing",
+              href: ""
+            }
+          ]
+        }) }}
+
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
             <legend>
