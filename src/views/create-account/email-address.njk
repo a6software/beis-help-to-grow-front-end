@@ -2,7 +2,7 @@
 
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/input/macro.njk" import govukInput %}
-
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 {#{% from "error-summary/macro.njk" import govukErrorSummary %}#}
 
 {% block pageTitle %}
@@ -12,7 +12,7 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form class="form" action="" method="post">
+      {# <form class="form" action="" method="post"> #}
 {#        <input type="hidden" name="_csrf" value="{{csrftoken}}">#}
 
 {#        {% if errorMessage %}#}
@@ -26,6 +26,16 @@
 {#            ]#}
 {#          }) }}#}
 {#        {% endif %}#}
+
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: [
+            {
+              text: "Invalid email addres",
+              href: ""
+            }
+          ]
+        }) }}
 
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
@@ -48,12 +58,13 @@
             }) }}
 
           </fieldset>
-
-          {{ govukButton({ text: "Continue" }) }}
-
+          <br>
+          {# {{ govukButton({ text: "Continue" }) }} #}
+          <button class="govuk-button" data-module="govuk-button" onclick="location.replace('http://localhost:3001/create-account/terms-conditions')">
+            Continue
+          </button>
         </div>
-      </form>
-
+      {# </form> #}
     </div>
   </div>
 
