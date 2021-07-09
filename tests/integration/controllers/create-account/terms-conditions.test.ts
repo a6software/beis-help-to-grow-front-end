@@ -1,13 +1,13 @@
 import { agent as request } from 'supertest';
 import { Request, Response } from 'express';
-import app from '../../../src/app';
-import controller from '../../../src/controllers/create-account/email-address';
+import app from '../../../../src/app';
+import controller from '../../../../src/controllers/create-account/terms-conditions';
 
-describe('controllers/create-account/email-address', () => {
-  describe('getEmailAddress', () => {
+describe('controllers/create-account/terms-conditions', () => {
+  describe('getTermsAndConditions', () => {
     it('should be a valid route', async () => {
       await request(app)
-        .get('/create-account/email-address')
+        .get('/create-account/terms-conditions')
         .expect('Content-Type', 'text/html; charset=utf-8')
         .expect(200);
     });
@@ -18,9 +18,9 @@ describe('controllers/create-account/email-address', () => {
         render: jest.fn(),
       } as unknown as Response;
 
-      controller.getEmailAddress(mockReq, mockRes);
+      controller.getTermsAndConditions(mockReq, mockRes);
 
-      expect(mockRes.render).toHaveBeenCalledWith('create-account/email-address');
+      expect(mockRes.render).toHaveBeenCalledWith('create-account/terms-conditions');
     });
   });
 });

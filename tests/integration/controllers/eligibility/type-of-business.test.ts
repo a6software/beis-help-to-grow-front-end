@@ -1,7 +1,7 @@
 import { agent as request } from 'supertest';
 import { Request, Response } from 'express';
-import app from '../../../src/app';
-import controller from '../../../src/controllers/eligibility/type-of-business';
+import app from '../../../../src/app';
+import controller from '../../../../src/controllers/eligibility/type-of-business';
 
 describe('controllers/eligibility/type-of-business', () => {
   describe('getTypeOfBusiness', () => {

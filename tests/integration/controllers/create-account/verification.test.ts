@@ -1,13 +1,13 @@
 import { agent as request } from 'supertest';
 import { Request, Response } from 'express';
-import app from '../../../src/app';
-import controller from '../../../src/controllers/create-account/account-created';
+import app from '../../../../src/app';
+import controller from '../../../../src/controllers/create-account/verification';
 
-describe('controllers/create-account/account-created', () => {
-  describe('getAccountCreated', () => {
+describe('controllers/create-account/verification', () => {
+  describe('getVerification', () => {
     it('should be a valid route', async () => {
       await request(app)
-        .get('/create-account/account-created')
+        .get('/create-account/verification')
         .expect('Content-Type', 'text/html; charset=utf-8')
         .expect(200);
     });
@@ -18,9 +18,9 @@ describe('controllers/create-account/account-created', () => {
         render: jest.fn(),
       } as unknown as Response;
 
-      controller.getAccountCreated(mockReq, mockRes);
+      controller.getVerification(mockReq, mockRes);
 
-      expect(mockRes.render).toHaveBeenCalledWith('create-account/account-created');
+      expect(mockRes.render).toHaveBeenCalledWith('create-account/verification');
     });
   });
 });

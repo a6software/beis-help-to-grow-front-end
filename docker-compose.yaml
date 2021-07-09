@@ -4,7 +4,10 @@ services:
     node-app:
         image: node:14-alpine
         environment:
-            EXAMPLE: 'an example environment variable'
+            NODE_ENV: "development"
+            SESSION_MONGODB_URL: mongodb://mongodb:27017/sessions
+            SESSION_KEY: some_secure_key_goes_here
+            SESSION_USE_SECURE_COOKIES: "false"
         ports:
             - 3001:3000
         working_dir: /opt/app
@@ -13,6 +16,13 @@ services:
         command: npm run start:dev
         networks:
             - web
+            - internal
+
+    mongodb:
+        image: mongo:3.6.23
+        ports:
+            - 4000:27017
+        networks:
             - internal
 
 networks:

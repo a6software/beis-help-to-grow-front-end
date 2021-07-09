@@ -4,5 +4,6 @@ import emailAddressController from '../../controllers/create-account/email-addre
 const router = express.Router();
 
 router.get('/', emailAddressController.getEmailAddress);
+router.post('/', emailAddressController.postEmailAddress);
 
 export default router;

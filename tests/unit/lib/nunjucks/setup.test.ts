@@ -1,7 +1,7 @@
 import { Express } from 'express';
 import nunjucks from 'nunjucks';
 import path from 'path';
-import setup from '../../../src/lib/nunjucks/setup';
+import setup from '../../../../src/lib/nunjucks/setup';
 
 jest.mock('nunjucks');
 
@@ -14,8 +14,8 @@ describe('lib/nunjucks', () => {
 
     expect(nunjucks.configure).toHaveBeenCalledWith(
       [
-        path.join(__dirname, '..', '..', '..', 'node_modules', 'govuk-frontend'),
-        path.join(__dirname, '..', '..', '..', 'src', 'views'),
+        path.join(__dirname, '..', '..', '..', '..', 'node_modules', 'govuk-frontend'),
+        path.join(__dirname, '..', '..', '..', '..', 'src', 'views'),
       ],
       { autoescape: true, express: mockApp, noCache: true, watch: isDev },
     );

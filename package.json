@@ -19,6 +19,8 @@
   "author": "Foundry4 <www.foundry4.com>",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.21.1",
+    "connect-mongodb-session": "^2.4.1",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
     "govuk-frontend": "^3.13.0",
@@ -34,7 +36,9 @@
     "@babel/preset-env": "^7.14.7",
     "@babel/preset-typescript": "^7.14.5",
     "@babel/runtime": "^7.14.6",
+    "@types/connect-mongodb-session": "^2.4.1",
     "@types/express": "^4.17.12",
+    "@types/express-session": "^1.17.4",
     "@types/jest": "^26.0.23",
     "@types/node": "^15.14.0",
     "@types/nunjucks": "^3.1.4",
