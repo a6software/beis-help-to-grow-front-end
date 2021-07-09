@@ -5,7 +5,7 @@
 {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 
 {% block pageTitle %}
-    Type of business
+    Cyber Security
 {% endblock %}
 
 {% block content %}
@@ -25,7 +25,7 @@
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
             <legend>
-              <h1 class="govuk-heading-l">What type of business are you?</h1>
+              <h1 class="govuk-heading-l">Does your company have Cyber security certification?</h1>
             </legend>
             <br>
             {{ govukRadios({
@@ -33,26 +33,26 @@
             name: "where-do-you-live",
             fieldset: {
                 legend: {
-                text: "",
+                text: "Copy to say what this is.",
                 isPageHeading: true,
                 classes: "govuk-fieldset__legend--l"
                 }
             },
             items: [
                 {
-                value: "I produce and sell my own software.",
-                text: "I produce and sell my own software."
+                value: "Yes",
+                text: "Yes"
                 },
                 {
-                value: "I do not produce software but sell them.",
-                text: "I do not produce software but sell them."
+                value: "No",
+                text: "No"
                 }
             ]
             }) }}
         </fieldset>
         <br>
           {# {{ govukButton({ text: "Continue" }) }} #}
-          <button class="govuk-button" data-module="govuk-button" onclick="location.replace('http://localhost:3001/eligibility/companies-house-number')">
+          <button class="govuk-button" data-module="govuk-button" onclick="location.replace('http://localhost:3001/eligibility/accessibility')">
             Continue
           </button>
         </div>
