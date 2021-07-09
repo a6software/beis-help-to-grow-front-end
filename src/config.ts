@@ -1,6 +1,12 @@
 import { ApplicationConfiguration } from './types';
 
 const config: ApplicationConfiguration = {
+  api: {
+    backend: {
+      baseUrl: process.env.API_BACKEND_BASE_URL,
+      timeout: Number(process.env.API_BACKEND_TIMEOUT || 3000),
+    },
+  },
   expressSession: {
     secret: process.env.SESSION_KEY,
     useSecureCookie: process.env.SESSION_USE_SECURE_COOKIES === 'true',
