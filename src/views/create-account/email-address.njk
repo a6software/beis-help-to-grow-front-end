@@ -3,69 +3,71 @@
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/input/macro.njk" import govukInput %}
 {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
-{#{% from "error-summary/macro.njk" import govukErrorSummary %}#}
 
 {% block pageTitle %}
-  Hello world
+    Email Address
 {% endblock %}
 
 {% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      {# <form class="form" action="" method="post"> #}
-{#        <input type="hidden" name="_csrf" value="{{csrftoken}}">#}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form class="form" action="" method="post">
 
-{#        {% if errorMessage %}#}
-{#          {{ govukErrorSummary({#}
-{#            titleText: "There is a problem",#}
-{#            errorList: [#}
-{#              {#}
-{#                text: errorMessage.text,#}
-{#                href: "#email"#}
-{#              }#}
-{#            ]#}
-{#          }) }}#}
-{#        {% endif %}#}
+                {% if errorMessage %}
+                    {{ govukErrorSummary({
+                        titleText: "There is a problem",
+                        errorList: [
+                            {
+                                text: errorMessage.text,
+                                href: "#email"
+                            }
+                        ]
+                    }) }}
+                {% endif %}
 
-        {{ govukErrorSummary({
-          titleText: "There is a problem",
-          errorList: [
-            {
-              text: "Invalid email addres",
-              href: ""
-            }
-          ]
-        }) }}
+                {{ govukErrorSummary({
+                    titleText: "There is a problem",
+                    errorList: [
+                        {
+                            text: "Invalid email addres",
+                            href: ""
+                        }
+                    ]
+                }) }}
 
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset">
-            <legend>
-              <h1 class="govuk-heading-l">Enter your email address</h1>
-            </legend>
-            <p class="govuk-body-m">We need your email address to complete your registration of interest in the Government's new Help To Grow: Digital scheme. Your email will only be used to contact you about the Help To Grow: Digital scheme.</p>
-            <br>
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                        <legend>
+                            <h1 class="govuk-heading-l">Enter your email address</h1>
+                        </legend>
+                        <p class="govuk-body-m">We need your email address to complete your registration of interest in
+                            the Government's new Help To Grow: Digital scheme. Your email will only be used to contact
+                            you about the Help To Grow: Digital scheme.</p>
+                        <br>
 
-            {{ govukInput({
-              label: {
-                text: "Email address",
-                classes: "govuk-body-m"
-              },
-              value: email,
-              id: "email",
-              name: "email",
-              classes: "govuk-input--width-20",
-              errorMessage:  errorMessage
-            }) }}
+                        {{ govukInput({
+                            label: {
+                                text: "Email address",
+                                classes: "govuk-body-m"
+                            },
+                            value: email,
+                            id: "email",
+                            name: "email",
+                            classes: "govuk-input--width-20",
+                            errorMessage:  errorMessage
+                        }) }}
 
-          </fieldset>
-          <br>
-          {# {{ govukButton({ text: "Continue" }) }} #}
-          <button class="govuk-button" data-module="govuk-button" onclick="location.replace('http://localhost:3001/create-account/terms-conditions')">
-            Continue
-          </button>
+                    </fieldset>
+                    <br>
+
+                    {{ govukButton({
+                        href: '/create-account/terms-conditions',
+                        text: "Continue"
+                    }) }}
+
+                </div>
+            </form>
         </div>
-      {# </form> #}
     </div>
-  </div>
 
 {% endblock %}

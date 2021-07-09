@@ -4,35 +4,38 @@
 {% from "govuk/components/details/macro.njk" import govukDetails %}
 
 {% block pageTitle %}
-  Verification Link
+    Verification Link
 {% endblock %}
 
 {% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      {# <form class="form" action="" method="post"> #}
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset">
-            <legend>
-              <h1 class="govuk-heading-l">Check your work email</h1>
-            </legend>
-            <p class="govuk-body-m">
-              A verification link have been sent to <b>name@email.com</b>. Go check your inbox and click on the link to verify this email address.
-            </p>
-            <br>
-            {{ govukDetails({
-              summaryText: "I still can't see the email",
-              html: "<ul><li><a href='#' class='govuk-link'>Try entering email again</a>.</li><li> If you you think there is a problem, <a href='#' class='govuk-link'>contact BEIS</a></li>"
-            }) }}
-          </fieldset>
-          <br>
-          {# {{ govukButton({ text: "Continue" }) }} #}
-          <button class="govuk-button" data-module="govuk-button" onclick="location.replace('http://localhost:3001/create-account/set-password')">
-            Continue
-          </button>
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form class="form" action="" method="post">
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                        <legend>
+                            <h1 class="govuk-heading-l">Check your work email</h1>
+                        </legend>
+                        <p class="govuk-body-m">
+                            A verification link have been sent to <b>name@email.com</b>. Go check your inbox and click
+                            on the link to verify this email address.
+                        </p>
+                        <br>
+                        {{ govukDetails({
+                            summaryText: "I still can't see the email",
+                            html: "<ul><li><a href='#' class='govuk-link'>Try entering email again</a>.</li><li> If you you think there is a problem, <a href='#' class='govuk-link'>contact BEIS</a></li>"
+                        }) }}
+                    </fieldset>
+                    <br>
+
+                    {{ govukButton({
+                        href: '/create-account/set-password',
+                        text: "Continue"
+                    }) }}
+
+                </div>
+            </form>
         </div>
-      {# </form> #}
     </div>
-  </div>
 
 {% endblock %}
