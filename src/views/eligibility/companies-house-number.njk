@@ -1,0 +1,53 @@
+{% extends "layout/base.njk" %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% block pageTitle %}
+    Companies house number
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {# <form class="form" action="" method="post"> #}
+
+      {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: [
+            {
+              text: "Please make a selection",
+              href: ""
+            }
+          ]
+        }) }}
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend>
+              <h1 class="govuk-heading-l">Enter your companies House registration number</h1>
+            </legend>
+            <p class="govuk-body-m">We will use your company registration number to...</p>
+            
+            {{ govukInput({
+              label: {
+                text: "Companies House registration number",
+                classes: "govuk-label--l",
+                isPageHeading: true
+              },
+              id: "event-name",
+              name: "event-name"
+            }) }}
+            
+            <p><a href="">Find my Companies House number</a></p>
+            <p><a href="">I don't have a Companies House number</a></p>
+        </fieldset>
+        <br>
+          {# {{ govukButton({ text: "Continue" }) }} #}
+          <button class="govuk-button" data-module="govuk-button" onclick="location.replace('http://localhost:3001/eligibility/companies-house-details')">
+            Continue
+          </button>
+        </div>
+      {# </form> #}
+    </div>
+  </div>
+{% endblock %}

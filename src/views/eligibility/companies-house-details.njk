@@ -1,0 +1,67 @@
+{% extends "layout/base.njk" %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
+{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+{% block pageTitle %}
+    Companies house number
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {# <form class="form" action="" method="post"> #}
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend>
+              <h1 class="govuk-heading-l">Check your company details</h1>
+            </legend>
+
+            {{ govukTable({
+              captionClasses: "govuk-table__caption--m",
+              firstCellIsHeader: false,
+              rows: [
+                [
+                  {
+                    html: "<b>Company name</b>"
+                  },
+                  {
+                    text: "Great accounting app"
+                  }
+                ],
+                [
+                  {
+                    html: "<b>Company registration number</b>"
+                  },
+                  {
+                    text: "5679754"
+                  }
+                ],
+                [
+                  {
+                    html: "<b>Company registration addres</b>"
+                  },
+                  {
+                    html: "<div><p>72 Guild Street</p><p>London</p><p>SE23 6FH</p></div>"
+                  }
+                ]
+              ]
+            }) }}
+            
+            <p><a href="">This is not my company</a></p>
+
+            {{ govukWarningText({
+              text: "Continue only if the company details are correct...",
+              iconFallbackText: "Warning"
+            }) }}
+        </fieldset>
+        <br>
+          {# {{ govukButton({ text: "Continue" }) }} #}
+          <button class="govuk-button" data-module="govuk-button" onclick="location.replace('http://localhost:3001/eligibility/cyber-security')">
+            Continue
+          </button>
+        </div>
+      {# </form> #}
+    </div>
+  </div>
+{% endblock %}
