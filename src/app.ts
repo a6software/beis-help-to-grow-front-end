@@ -1,17 +1,27 @@
 import express from 'express';
 import path from 'path';
 import pinoHttp from 'pino-http';
+import session from 'express-session';
 import setupNunjucks from './lib/nunjucks/setup';
 import requestIdGenerator from './lib/request-id-generator';
 import routes from './routes';
 import config from './config';
+import sessionConfig from './lib/session/session-config';
+import getApplicationEnvironment from './lib/get-application-environment';
 
 const app = express();
+
 app.use(
   pinoHttp({
     genReqId: () => requestIdGenerator(),
   }),
 );
+
+app.use(session(sessionConfig(getApplicationEnvironment())));
+
+if (config.expressSession.useSecureCookie) {
+  app.set('trust proxy', 1); // trust first proxy
+}
 
 const isDev = app.get('env') === 'development';
 

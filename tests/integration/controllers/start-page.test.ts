@@ -1,7 +1,7 @@
 import { agent as request } from 'supertest';
 import { Request, Response } from 'express';
-import app from '../../src/app';
-import controller from '../../src/controllers/start-page';
+import app from '../../../src/app';
+import controller from '../../../src/controllers/start-page';
 
 describe('controllers/start-page', () => {
   describe('getStartPage', () => {
