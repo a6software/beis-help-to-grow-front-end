@@ -11,3 +11,13 @@ services:
         volumes:
             - ./:/opt/app:ro
         command: npm run start:dev
+        networks:
+            - web
+            - internal
+
+networks:
+    web:
+        external: true
+    internal:
+        external: true
+        name: help_to_grow_internal_network
