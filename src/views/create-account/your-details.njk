@@ -1,0 +1,116 @@
+{% extends "layout/base.njk" %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+
+{% block pageTitle %}
+    {% if errorMap | length %}Errors: {% endif %}Your Details
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form class="form" action="" method="post" novalidate>
+
+                {% if errorMap | length %}
+                    {{ govukErrorSummary({
+                        titleText: "There is a problem",
+                        errorList: [
+                            {
+                                text: errorMap['workEmailAddress'],
+                                href: "#workEmailAddress"
+                            },
+                            {
+                                text: errorMap['fullName'],
+                                href: "#fullName"
+                            }
+                        ]
+                    }) }}
+                {% endif %}
+
+                <h1 class="govuk-heading-l">We need your details</h1>
+                <p class="govuk-body-m">To create a HtG account, we need the following information.</p>
+
+                {{ govukInput({
+                    label: {
+                        text: "Full name",
+                        classes: "govuk-body-m"
+                    },
+                    value: fullName,
+                    id: "fullName",
+                    name: "fullName",
+                    classes: "govuk-input--width-20",
+                    errorMessage: errorMap['fullName'] and {
+                        text: errorMap['fullName']
+                    }
+                }) }}
+
+                {{ govukInput({
+                    label: {
+                        text: "Position in company",
+                        classes: "govuk-body-m"
+                    },
+                    value: positionInCompany,
+                    id: "positionInCompany",
+                    name: "positionInCompany",
+                    classes: "govuk-input--width-20",
+                    errorMessage: errorMap['positionInCompany'] and {
+                        text: errorMap['positionInCompany']
+                    }
+                }) }}
+
+                {{ govukInput({
+                    label: {
+                        text: "Work email address",
+                        classes: "govuk-body-m"
+                    },
+                    value: workEmailAddress,
+                    id: "workEmailAddress",
+                    name: "workEmailAddress",
+                    type: "email",
+                    classes: "govuk-input--width-20",
+                    errorMessage: errorMap['workEmailAddress'] and {
+                        text: errorMap['workEmailAddress']
+                    }
+                }) }}
+
+                {{ govukInput({
+                    label: {
+                        text: "Phone number",
+                        classes: "govuk-body-m"
+                    },
+                    value: phoneNumber,
+                    id: "phoneNumber",
+                    name: "phoneNumber",
+                    type: "tel",
+                    classes: "govuk-input--width-20",
+                    errorMessage: errorMap['phoneNumber'] and {
+                        text: errorMap['phoneNumber']
+                    }
+                }) }}
+
+                {{ govukInput({
+                    label: {
+                        text: "Company website URL",
+                        classes: "govuk-body-m"
+                    },
+                    value: companyWebsiteUrl,
+                    id: "companyWebsiteUrl",
+                    name: "companyWebsiteUrl",
+                    type: "url",
+                    classes: "govuk-input--width-20",
+                    errorMessage: errorMap['companyWebsiteUrl'] and {
+                        text: errorMap['companyWebsiteUrl']
+                    }
+                }) }}
+
+                {{ govukButton({
+                    text: "Continue"
+                }) }}
+
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

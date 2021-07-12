@@ -4,5 +4,6 @@ import directorOrAuthorisedController from '../../controllers/create-account/dir
 const router = express.Router();
 
 router.get('/', directorOrAuthorisedController.getDirectorOrAuthorised);
+router.post('/', directorOrAuthorisedController.postDirectorOrAuthorised);
 
 export default router;

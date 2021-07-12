@@ -44,7 +44,11 @@ declare module 'express-session' {
   export interface SessionData {
     previousRequest: { [key: string]: any };
     account: {
-      email: Email;
+      companyWebsiteUrl: string;
+      fullName: string;
+      phoneNumber: string;
+      positionInCompany: string;
+      workEmailAddress: Email;
     };
   }
 }

@@ -1,6 +1,6 @@
 export const ROUTES = {
   CREATE_ACCOUNT: {
-    EMAIL_ADDRESS: '/create-account/email-address',
+    YOUR_DETAILS: '/create-account/your-details',
     TERMS_AND_CONDITIONS: '/create-account/terms-and-conditions',
   },
   SIGN_IN: '/sign-in',
