@@ -1,0 +1,37 @@
+{% extends "layout/base.njk" %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+
+{% block pageTitle %}
+    Director or authorised
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form class="form" action="" method="post" novalidate>
+                <div class="govuk-form-group">
+                    <h1 class="govuk-heading-l">Are you a director or an authorised personnel of the
+                        company?</h1>
+
+                    <p class="govuk-body-m">Application to HtG can only be made by a director of the company or an
+                        authorised personnel of the company. Checks will be carried out in the application to verify
+                        applicant details.</p>
+
+                    {{ govukWarningText({
+                        text: "Continue only if you are the director or an authorised personnel of the company.",
+                        iconFallbackText: "Warning"
+                    }) }}
+
+                    {{ govukButton({
+                        text: "Continue"
+                    }) }}
+
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+{% endblock %}

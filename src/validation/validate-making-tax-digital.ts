@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import { getBackEndApiConnection } from '../lib/backend-api-connection';
+import { getBackEndApiConnection } from '../lib/api/backend-api-connection';
 import API_ROUTE from '../lib/backend-api-routes';
 import { ErrorResponse, ValidateMakingTaxDigitalSuccessResponse } from '../types';
 

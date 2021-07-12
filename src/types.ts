@@ -2,6 +2,9 @@ import { Express } from 'express';
 import { MongoDBSessionOptions } from 'connect-mongodb-session';
 
 export type Email = string;
+export type EmailVerificationCode = string;
+export type JWT = string;
+export type PlainTextPassword = string;
 
 export type ApplicationConfiguration = {
   api: {
@@ -9,6 +12,10 @@ export type ApplicationConfiguration = {
       baseUrl: string;
       timeout: number;
     };
+  };
+  cookies: {
+    secure: boolean;
+    expires: number;
   };
   expressSession: {
     secret: string;
@@ -25,6 +32,9 @@ export type ApplicationEnvironment = 'test' | 'development' | 'staging' | 'produ
 export type BackEndApiConnectionOptions = {
   baseUrl: string;
   timeout: number;
+  headers?: {
+    authorization: string;
+  };
 };
 
 export type NunjucksConfigurationOptions = {
@@ -32,12 +42,22 @@ export type NunjucksConfigurationOptions = {
   isDev: boolean;
 };
 
+export type YourDetails = {
+  workEmailAddress: Email;
+  companyWebsiteUrl: string;
+  fullName: string;
+  phoneNumber: string;
+  positionInCompany: string;
+};
+
+export type TermsAndConditions = {
+  consentToTermsAndConditions: boolean;
+  consentToDataSharing: boolean;
+};
+
 declare module 'express-session' {
   export interface SessionData {
     previousRequest: { [key: string]: any };
-    account: {
-      email: Email;
-    };
     eligibility: {
       cyberSecurity: boolean;
       accessibility: boolean;
@@ -49,6 +69,9 @@ declare module 'express-session' {
       gdpr: boolean;
       physicalMedia: boolean;
     };
+    yourDetails: YourDetails;
+    termsAndConditions: TermsAndConditions;
+    emailVerificationCode: EmailVerificationCode;
   }
 }
 
@@ -69,14 +92,25 @@ export type SuccessResponse = {
 
 export type SignInSuccessResponse = SuccessResponse & {
   data: {
-    token: string;
+    token: JWT;
     user: UserDetails;
   };
 };
 
-export type ValidateEmailSuccessResponse = SuccessResponse & {
+export type ValidateRepeatedPasswordSuccessResponse = SuccessResponse;
+
+export type ValidateYourDetailsSuccessResponse = SuccessResponse & {
+  data: YourDetails;
+};
+
+export type ValidateTermsAndConditionsSuccessResponse = SuccessResponse & {
+  data: TermsAndConditions;
+};
+
+export type CreateUserSuccessResponse = SuccessResponse & {
   data: {
     email: Email;
+    jwt: JWT;
   };
 };
 

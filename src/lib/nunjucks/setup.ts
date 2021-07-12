@@ -2,6 +2,7 @@ import nunjucks, { Environment } from 'nunjucks';
 import path from 'path';
 import { NunjucksConfigurationOptions } from '../../types';
 import { validationErrorsToGovUkErrorList } from '../validation-errors-to-gov-uk-error-list';
+import { ROUTES } from '../../routes/routes';
 
 const setup = ({ app, isDev }: NunjucksConfigurationOptions): Environment => {
   const nunjucksConfig = {
@@ -19,6 +20,8 @@ const setup = ({ app, isDev }: NunjucksConfigurationOptions): Environment => {
   const env = nunjucks.configure(viewPaths, nunjucksConfig);
 
   env.addFilter('validationErrorsToGovUkErrorList', validationErrorsToGovUkErrorList);
+
+  env.addGlobal('ROUTES', ROUTES);
 
   return env;
 };

@@ -5,8 +5,11 @@ describe('lib/backend-api-routes', () => {
   it('should define the expected routes', () => {
     expect(API_ROUTE).toEqual({
       CREATE_ACCOUNT: {
-        VALIDATE_EMAIL_ADDRESS: '/create-account/validate-email-address',
+        VALIDATE_TERMS_AND_CONDITIONS: '/create-account/validate-terms-and-conditions',
+        VALIDATE_YOUR_DETAILS: '/create-account/validate-your-details',
       },
+      SIGN_IN: '/sign-in',
+      VERIFY_JWT: '/verify-jwt',
     });
   });
 });

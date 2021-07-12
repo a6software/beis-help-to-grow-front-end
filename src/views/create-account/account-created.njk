@@ -16,7 +16,7 @@
                     titleText: "Your HtG account has been created"
                 }) }}
 
-                <p class="govuk-body-m">We have sent you a confirmation email to <b>name@email.com</b>.</p>
+                <p class="govuk-body-m">We have sent you a confirmation email to <b>{{ workEmailAddress }}</b>.</p>
 
                 <fieldset class="govuk-fieldset">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
@@ -26,7 +26,7 @@
                     </legend>
 
                     <div class="govuk-form-group">
-                        <p>1. Your vendor account for application to HtG has been created. <a href="">Go to account.</a>
+                        <p>1. Your vendor account for application to HtG has been created. <a href="{{ ROUTES.SOFTWARE_DETAILS.OVERVIEW }}">Go to account.</a>
                         </p>
                         <p>2. To apply, you will need:</p>
                         <ul>
