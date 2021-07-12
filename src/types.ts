@@ -2,6 +2,7 @@ import { Express } from 'express';
 import { MongoDBSessionOptions } from 'connect-mongodb-session';
 
 export type Email = string;
+export type JWT = string;
 
 export type ApplicationConfiguration = {
   api: {
@@ -9,6 +10,10 @@ export type ApplicationConfiguration = {
       baseUrl: string;
       timeout: number;
     };
+  };
+  cookies: {
+    secure: boolean;
+    expires: number;
   };
   expressSession: {
     secret: string;
@@ -25,6 +30,9 @@ export type ApplicationEnvironment = 'test' | 'development' | 'staging' | 'produ
 export type BackEndApiConnectionOptions = {
   baseUrl: string;
   timeout: number;
+  headers?: {
+    authorization: string;
+  };
 };
 
 export type NunjucksConfigurationOptions = {
@@ -58,7 +66,7 @@ export type SuccessResponse = {
 
 export type SignInSuccessResponse = SuccessResponse & {
   data: {
-    token: string;
+    token: JWT;
     user: UserDetails;
   };
 };

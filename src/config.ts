@@ -7,6 +7,10 @@ const config: ApplicationConfiguration = {
       timeout: Number(process.env.API_BACKEND_TIMEOUT || 3000),
     },
   },
+  cookies: {
+    secure: process.env.COOKIE_SECURE === 'true',
+    expires: Number(process.env.COOKIE_EXPIRES || 24 * 60 * 60 * 1000),
+  },
   expressSession: {
     secret: process.env.SESSION_KEY,
     useSecureCookie: process.env.SESSION_USE_SECURE_COOKIES === 'true',

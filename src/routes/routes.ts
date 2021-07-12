@@ -5,7 +5,7 @@ export const ROUTES = {
   },
   SIGN_IN: '/sign-in',
   SOFTWARE_DETAILS: {
-    OVERVIEW: '/software-details',
+    OVERVIEW: '/software-details/overview',
   },
 };
 
