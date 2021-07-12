@@ -1,13 +1,13 @@
 import { agent as request } from 'supertest';
 import { Request, Response } from 'express';
 import app from '../../../../src/app';
-import controller from '../../../../src/controllers/create-account/terms-conditions';
+import controller from '../../../../src/controllers/create-account/terms-and-conditions';
 
-describe('controllers/create-account/terms-conditions', () => {
+describe('controllers/create-account/terms-and-conditions', () => {
   describe('getTermsAndConditions', () => {
     it('should be a valid route', async () => {
       await request(app)
-        .get('/create-account/terms-conditions')
+        .get('/create-account/terms-and-conditions')
         .expect('Content-Type', 'text/html; charset=utf-8')
         .expect(200);
     });
@@ -20,7 +20,7 @@ describe('controllers/create-account/terms-conditions', () => {
 
       controller.getTermsAndConditions(mockReq, mockRes);
 
-      expect(mockRes.render).toHaveBeenCalledWith('create-account/terms-conditions');
+      expect(mockRes.render).toHaveBeenCalledWith('create-account/terms-and-conditions');
     });
   });
 });

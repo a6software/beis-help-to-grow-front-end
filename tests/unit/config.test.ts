@@ -1,7 +1,13 @@
-import config from '../src/config';
-import { ApplicationConfiguration } from '../src/types';
+import config from '../../src/config';
+import { ApplicationConfiguration } from '../../src/types';
 
 const baseConfig: ApplicationConfiguration = {
+  api: {
+    backend: {
+      baseUrl: 'http://example.dev',
+      timeout: 5000,
+    },
+  },
   expressSession: {
     secret: 'a session key secret goes here',
     useSecureCookie: false,
@@ -37,11 +43,19 @@ describe('config', () => {
 
   test('will receive sane defaults', async () => {
     delete process.env.PORT;
+    delete process.env.API_BACKEND_TIMEOUT;
 
-    const conf = await import('../src/config');
+    const conf = await import('../../src/config');
 
     expect(conf.default).toEqual({
       ...baseConfig,
+      api: {
+        ...baseConfig.api,
+        backend: {
+          ...baseConfig.api.backend,
+          timeout: 3000,
+        },
+      },
       server: {
         port: 3000,
       },

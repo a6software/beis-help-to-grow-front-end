@@ -4,6 +4,7 @@ services:
     node-app:
         image: node:14-alpine
         environment:
+            API_BACKEND_BASE_URL: "http://help-to-grow-backend_node-app_1:3000"
             NODE_ENV: "development"
             SESSION_MONGODB_URL: mongodb://mongodb:27017/sessions
             SESSION_KEY: some_secure_key_goes_here

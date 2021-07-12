@@ -5,7 +5,7 @@ import setup from '../../../../src/lib/nunjucks/setup';
 
 jest.mock('nunjucks');
 
-describe('lib/nunjucks', () => {
+describe('lib/nunjucks/setup', () => {
   it('should setup nunjucks', () => {
     const mockApp: Express = jest.fn() as unknown as Express;
     const isDev = false;

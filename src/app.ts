@@ -2,12 +2,16 @@ import express from 'express';
 import path from 'path';
 import pinoHttp from 'pino-http';
 import session from 'express-session';
+import bodyParser from 'body-parser';
 import setupNunjucks from './lib/nunjucks/setup';
 import requestIdGenerator from './lib/request-id-generator';
 import routes from './routes';
 import config from './config';
 import sessionConfig from './lib/session/session-config';
 import getApplicationEnvironment from './lib/get-application-environment';
+import { previousRequestToResLocals } from './middleware/previous-request-to-res-locals';
+import { previousRequestFailureToResLocalsErrorMap } from './middleware/previous-request-failure-to-res-locals-error-map';
+import { clearPreviousRequestFromSession } from './middleware/clear-previous-request-from-session';
 
 const app = express();
 
@@ -30,7 +34,14 @@ setupNunjucks({
   isDev,
 });
 
+app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: false }));
+
 app.set('view engine', 'njk');
+
+app.use(previousRequestToResLocals);
+app.use(previousRequestFailureToResLocalsErrorMap);
+app.use(clearPreviousRequestFromSession);
 app.use(routes);
 
 app.use('/public', express.static(path.join(__dirname, 'public')));

@@ -21,7 +21,7 @@ export default function sessionConfigMongoDb(): SessionOptions {
 
   return {
     store,
-    secret: secret,
+    secret,
     resave: false,
     saveUninitialized: true,
     cookie: {

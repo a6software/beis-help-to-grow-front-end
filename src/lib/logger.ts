@@ -1,6 +1,5 @@
 import pino from 'pino';
-import P from 'pino';
 
-const logger = (): P.Logger => pino();
+const logger = (): pino.Logger => pino();
 
 export default logger;
