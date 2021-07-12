@@ -1,5 +1,13 @@
 import sessionConfigMongoDb from '../../../../src/lib/session/session-config-mongodb';
 
+jest.mock('connect-mongodb-session', () => {
+  return () => {
+    return () => ({
+      on: jest.fn(),
+    });
+  };
+});
+
 describe('lib/session/session-config-mongodb', () => {
   const OLD_ENV = process.env;
 
