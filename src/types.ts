@@ -52,6 +52,10 @@ declare module 'express-session' {
   }
 }
 
+export type UserDetails = {
+  email: Email;
+};
+
 export type ErrorResponse = {
   success: false;
   error: {
@@ -61,6 +65,13 @@ export type ErrorResponse = {
 
 export type SuccessResponse = {
   success: true;
+};
+
+export type SignInSuccessResponse = SuccessResponse & {
+  data: {
+    token: string;
+    user: UserDetails;
+  };
 };
 
 export type ValidateEmailSuccessResponse = SuccessResponse & {

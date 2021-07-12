@@ -14,6 +14,7 @@ export const API_ROUTE = {
     PHYSICAL_MEDIA: '/eligibility/validate-physical-media',
     GDPR: '/eligibility/validate-gdpr',
   },
+  SIGN_IN: '/sign-in',
 };
 
 export default API_ROUTE;

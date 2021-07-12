@@ -16,6 +16,10 @@ export const ROUTES = {
     GDPR: '/eligibility/gdpr',
     DROP_OUT: '/eligibility/drop-out',
   },
+  SIGN_IN: '/sign-in',
+  SOFTWARE_DETAILS: {
+    OVERVIEW: '/software-details',
+  },
 };
 
 export default {

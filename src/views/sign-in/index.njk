@@ -1,0 +1,52 @@
+{% extends "layout/base.njk" %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+
+{% block pageTitle %}
+    {% if errorMap | length %}Errors: {% endif %}Sign in
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form class="form" action="" method="post">
+
+                {% if errorMap | length %}
+                    {{ govukErrorSummary({
+                        titleText: "There is a problem",
+                        errorList: [
+                            {
+                                text: "The username and password combination was incorrect.",
+                                href: ""
+                            }
+                        ]
+                    }) }}
+                {% endif %}
+
+                {{ govukInput({
+                    label: {
+                        text: "Email address"
+                    },
+                    id: "email",
+                    name: "email"
+                }) }}
+
+                {{ govukInput({
+                    label: {
+                        text: "Password"
+                    },
+                    id: "password",
+                    name: "password"
+                }) }}
+
+                {{ govukButton({
+                    text: "Sign in"
+                }) }}
+            </form>
+
+        </div>
+    </div>
+
+{% endblock %}
