@@ -4,3 +4,7 @@ export const ROUTES = {
     TERMS_AND_CONDITIONS: '/create-account/terms-and-conditions',
   },
 };
+
+export default {
+  ROUTES,
+};

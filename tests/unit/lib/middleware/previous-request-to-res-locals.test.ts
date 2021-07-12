@@ -1,5 +1,5 @@
-import { mockReq, mockRes } from './mock';
 import { NextFunction, Request, Response } from 'express';
+import { mockReq, mockRes } from './mock';
 import { previousRequestToResLocals } from '../../../../src/middleware/previous-request-to-res-locals';
 
 describe('lib/middleware/previous-request-to-res-locals', () => {

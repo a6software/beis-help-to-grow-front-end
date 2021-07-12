@@ -1,13 +1,13 @@
 import { agent as request } from 'supertest';
 import { Request, Response } from 'express';
+import axios from 'axios';
+import MockAdapter from 'axios-mock-adapter';
 import app from '../../../../src/app';
 import controller from '../../../../src/controllers/create-account/email-address';
 import { ROUTES } from '../../../../src/routes/routes';
 import { mockReq, mockRes } from '../../../unit/lib/middleware/mock';
 
 // jest.mock('../../../../src/service/validation/validate-email-address');
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
 import API_ROUTE from '../../../../src/lib/backend-api-routes';
 
 const mockAxios = new MockAdapter(axios);

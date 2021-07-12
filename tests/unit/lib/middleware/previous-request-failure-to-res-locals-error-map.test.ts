@@ -1,5 +1,5 @@
-import { mockReq, mockRes } from './mock';
 import { NextFunction, Request, Response } from 'express';
+import { mockReq, mockRes } from './mock';
 import { previousRequestFailureToResLocalsErrorMap } from '../../../../src/middleware/previous-request-failure-to-res-locals-error-map';
 
 describe('lib/middleware/previous-request-failure-to-res-locals-error-map', () => {

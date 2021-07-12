@@ -15,9 +15,9 @@ describe('lib/session/session-config-mongodb', () => {
   it('should throw if given an invalid config', async () => {
     delete process.env.SESSION_KEY;
 
-    const sessionConfigMongoDb = await import('../../../../src/lib/session/session-config-mongodb');
+    const sessionConfig = await import('../../../../src/lib/session/session-config-mongodb');
 
-    expect(() => sessionConfigMongoDb.default()).toThrow('Session secret must be set');
+    expect(() => sessionConfig.default()).toThrow('Session secret must be set');
   });
 
   it('should return the in memory config for the test environment', () => {

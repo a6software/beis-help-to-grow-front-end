@@ -1,5 +1,5 @@
-import { mockReq, mockRes } from './mock';
 import { NextFunction, Request, Response } from 'express';
+import { mockReq, mockRes } from './mock';
 import { clearPreviousRequestFromSession } from '../../../../src/middleware/clear-previous-request-from-session';
 
 describe('lib/middleware/clear-previous-request-from-session', () => {
