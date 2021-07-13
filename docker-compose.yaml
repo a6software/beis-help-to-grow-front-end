@@ -4,7 +4,7 @@ services:
     node-app:
         image: node:14-alpine
         environment:
-            API_BACKEND_BASE_URL: "http://help-to-grow-backend_node-app_1:3000"
+            API_BACKEND_BASE_URL: "http://backend_api:3000"
             NODE_ENV: "development"
             SESSION_MONGODB_URL: mongodb://mongodb:27017/sessions
             SESSION_KEY: some_secure_key_goes_here
@@ -15,16 +15,12 @@ services:
         volumes:
             - ./:/opt/app:ro
         command: npm run start:dev
-        networks:
-            - internal
 
     mongodb:
         image: mongo:3.6.23
         ports:
             - 4000:27017
-        networks:
-            - internal
 
 networks:
-    internal:
+    default:
         name: help_to_grow_internal_network
