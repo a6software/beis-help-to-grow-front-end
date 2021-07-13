@@ -16,12 +16,7 @@
                 {% if errorMap | length %}
                     {{ govukErrorSummary({
                         titleText: "There is a problem",
-                        errorList: [
-                            {
-                                text: errorMap['email'],
-                                href: "#email"
-                            }
-                        ]
+                        errorList: errorMap | validationErrorsToGovUkErrorList
                     }) }}
                 {% endif %}
 

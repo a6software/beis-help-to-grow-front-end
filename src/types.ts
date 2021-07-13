@@ -57,3 +57,22 @@ export type ValidateEmailSuccessResponse = SuccessResponse & {
     email: Email;
   };
 };
+
+export type ValidationError = {
+  message: string;
+  path: string[];
+  type: string;
+  context: {
+    value: string;
+    invalids: string[];
+    label: string;
+    key: string;
+  };
+};
+
+export type GovUkErrorSummaryItem = {
+  text: string;
+  href: string;
+};
+
+export type ValidationErrorMap = { [key: string]: string };
