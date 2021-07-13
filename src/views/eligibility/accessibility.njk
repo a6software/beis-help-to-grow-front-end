@@ -5,32 +5,31 @@
 {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 
 {% block pageTitle %}
-    Accessibility
+    {% if errorMap | length %}Errors: {% endif %}Accessibility
 {% endblock %}
 
 {% block content %}
     <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      {# <form class="form" action="" method="post"> #}
+        <form class="form" action="" method="post" novalidate>
 
-      {{ govukErrorSummary({
-          titleText: "There is a problem",
-          errorList: [
-            {
-              text: "Please make a selection",
-              href: ""
-            }
-          ]
-        }) }}
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset">
-            <legend>
-              <h1 class="govuk-heading-l">Does your company meet accessibility standards?</h1>
-            </legend>
-            <br>
+          {% if errorMap | length %}
+                    {{ govukErrorSummary({
+                        titleText: "There is a problem",
+                        errorList: [
+                            {
+                                text: errorMap['accessibility'],
+                                href: "#accessibility"
+                            }
+                        ]
+                    }) }}
+          {% endif %}
+
+            <h1 class="govuk-heading-l">Does your company meet accessibility standards?</h1>
+
             {{ govukRadios({
-            idPrefix: "where-do-you-live",
-            name: "where-do-you-live",
+            idPrefix: "accessibility",
+            name: "accessibility",
             fieldset: {
                 legend: {
                 text: "Copy to say what this is.",
@@ -40,23 +39,21 @@
             },
             items: [
                 {
-                value: "Yes",
+                value: "yes",
                 text: "Yes"
                 },
                 {
-                value: "No",
+                value: "no",
                 text: "No"
                 }
-            ]
+            ],
+            errorMessage: errorMap['accessibility'] and {
+                        text: errorMap['accessibility']
+                    }
             }) }}
-        </fieldset>
-        <br>
-          {# {{ govukButton({ text: "Continue" }) }} #}
-          <button class="govuk-button" data-module="govuk-button" onclick="location.replace('http://localhost:3001/eligibility/accessibility')">
-            Continue
-          </button>
+          {{ govukButton({ text: "Continue" }) }}
         </div>
-      {# </form> #}
+      </form>
     </div>
   </div>
 {% endblock %}
