@@ -9,9 +9,7 @@ install:
 .PHONY: install
 
 serve:
-	docker network create web || true && \
-		docker network create help_to_grow_internal_network || true && \
-		docker compose \
+	docker compose \
 				-p help_to_grow_vendor_www \
 				down --remove-orphans && \
 		docker compose up --remove-orphans
