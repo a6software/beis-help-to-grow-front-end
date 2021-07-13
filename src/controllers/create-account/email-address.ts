@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { ROUTES } from '../../routes/routes';
-import { validateEmailAddress } from '../../service/validation/validate-email-address';
+import { validateEmailAddress } from '../../validation/validate-email-address';
 
 const getEmailAddress = (req: Request, res: Response) => {
   res.render('create-account/email-address', {
@@ -30,11 +30,6 @@ const postEmailAddress = async (req: Request, res: Response) => {
     res.redirect(ROUTES.CREATE_ACCOUNT.EMAIL_ADDRESS);
     return;
   }
-
-  req.session.account = {
-    ...req.session.account,
-    email,
-  };
 
   res.redirect(ROUTES.CREATE_ACCOUNT.TERMS_AND_CONDITIONS);
 };

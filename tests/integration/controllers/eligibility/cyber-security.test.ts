@@ -2,6 +2,9 @@ import { agent as request } from 'supertest';
 import { Request, Response } from 'express';
 import app from '../../../../src/app';
 import controller from '../../../../src/controllers/eligibility/cyber-security';
+import { mockReq, mockRes } from '../../../unit/lib/middleware/mock';
+
+const mockErrorMap = { a: 'b' };
 
 describe('controllers/eligibility/cyber-security', () => {
   describe('getTypeOfBusiness', () => {
@@ -12,15 +15,68 @@ describe('controllers/eligibility/cyber-security', () => {
         .expect(200);
     });
 
-    it('should render the expected template', () => {
-      const mockReq = jest.fn() as unknown as Request;
-      const mockRes = {
-        render: jest.fn(),
-      } as unknown as Response;
+    [
+      {
+        description: 'no existing data',
+        setupReq: () => mockReq() as Request,
+        setupRes: () => mockRes() as any as Response,
+        expectedTemplateVariables: {
+          errorMap: {},
+          cyberSecurity: undefined,
+        },
+      },
+      {
+        description: 'with existing data - valid',
+        setupReq: () =>
+          ({
+            ...mockReq(),
+            session: {
+              eligibility: {
+                cyberSecurity: true,
+              },
+            },
+          } as Request),
+        setupRes: () => mockRes() as any as Response,
+        expectedTemplateVariables: {
+          errorMap: {},
+          cyberSecurity: true,
+        },
+      },
+      {
+        description: 'with existing data - with error map',
+        setupReq: () =>
+          ({
+            ...mockReq(),
+            session: {
+              eligibility: {
+                cyberSecurity: false,
+              },
+            },
+          } as Request),
+        setupRes: () =>
+          ({
+            ...mockRes(),
+            locals: {
+              errorMap: mockErrorMap,
+            },
+          } as any as Response),
+        expectedTemplateVariables: {
+          errorMap: mockErrorMap,
+          cyberSecurity: false,
+        },
+      },
+    ].forEach(({ description, setupReq, setupRes, expectedTemplateVariables }) => {
+      it(`should render the expected template - ${description}`, () => {
+        const req = setupReq();
+        const res = setupRes();
 
-      controller.getCyberSecurity(mockReq, mockRes);
+        controller.getCyberSecurity(req, res);
 
-      expect(mockRes.render).toHaveBeenCalledWith('eligibility/cyber-security');
+        expect(res.render).toHaveBeenCalledWith(
+          'eligibility/cyber-security',
+          expectedTemplateVariables,
+        );
+      });
     });
   });
 });

@@ -2,6 +2,7 @@ import express from 'express';
 import companiesHouseDetailsRouter from './companies-house-details';
 import companiesHouseNumberRouter from './companies-house-number';
 import cyberSecurityRouter from './cyber-security';
+import dropOutRouter from './drop-out';
 import typeOfBusinessRouter from './type-of-business';
 import accessibilityRouter from './accessibility';
 import categoryRouter from './category';
@@ -18,6 +19,7 @@ const router = express.Router();
 router.use('/companies-house-details', companiesHouseDetailsRouter);
 router.use('/companies-house-number', companiesHouseNumberRouter);
 router.use('/cyber-security', cyberSecurityRouter);
+router.use('/drop-out', dropOutRouter);
 router.use('/type-of-business', typeOfBusinessRouter);
 router.use('/accessibility', accessibilityRouter);
 router.use('/category', categoryRouter);
@@ -28,6 +30,5 @@ router.use('/mtd-warning', mtdWarningRouter);
 router.use('/online-purchase', onlinePurchaseRouter);
 router.use('/physical-media', physicalMediaRouter);
 router.use('/ratings', ratingsRouter);
-
 
 export default router;
