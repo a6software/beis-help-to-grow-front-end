@@ -1,0 +1,32 @@
+{% extends "layout/base.njk" %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% block pageTitle %}
+    Eligibility complete
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading">
+                            You are eligible to apply to HtG scheme.
+                        </h1>
+                    </legend>
+
+                    <div class="govuk-form-group">
+                        <p>Copy to say we will make furture checks in your application,<br/></p>
+                        <p><b>Create Account</b></p>
+                        <p>To start your HtG application, you will need to create a HtG account.</p>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
