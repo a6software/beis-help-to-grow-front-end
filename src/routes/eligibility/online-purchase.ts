@@ -3,7 +3,6 @@ import onlinePurchaseController from '../../controllers/eligibility/online-purch
 
 const router = express.Router();
 
-router.get('/', onlinePurchaseController.getOnlinePurchase,
-);
+router.get('/', onlinePurchaseController.getOnlinePurchase);
 
 export default router;

@@ -3,7 +3,6 @@ import physicalMediaController from '../../controllers/eligibility/physical-medi
 
 const router = express.Router();
 
-router.get('/', physicalMediaController.getPhysicalMedia,
-);
+router.get('/', physicalMediaController.getPhysicalMedia);
 
 export default router;

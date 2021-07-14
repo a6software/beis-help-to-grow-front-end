@@ -3,7 +3,6 @@ import cyberSecurityController from '../../controllers/eligibility/cyber-securit
 
 const router = express.Router();
 
-router.get('/', cyberSecurityController.getCyberSecurity,
-);
+router.get('/', cyberSecurityController.getCyberSecurity);
 
 export default router;
