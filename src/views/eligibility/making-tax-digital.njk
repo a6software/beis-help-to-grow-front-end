@@ -5,29 +5,30 @@
 {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 
 {% block pageTitle %}
-    Making Tax Digital
+    {% if errorMap | length %}Errors: {% endif %}Making Tax Digital
 {% endblock %}
 
 {% block content %}
     <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      {# <form class="form" action="" method="post"> #}
+      <form class="form" action="" method="post" novalidate>
 
-      {{ govukErrorSummary({
-          titleText: "There is a problem",
-          errorList: [
-            {
-              text: "Please make a selection",
-              href: ""
-            }
-          ]
-        }) }}
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset">
+          {% if errorMap | length %}
+              {{ govukErrorSummary({
+                  titleText: "There is a problem",
+                  errorList: [
+                      {
+                          text: errorMap['makingTaxDigital'],
+                          href: "#makingTaxDigital"
+                      }
+                  ]
+                }) }}
+            {% endif %}
+
             {{ govukRadios({
             classes: "govuk-radios--inline",
-            idPrefix: "where-do-you-live",
-            name: "where-do-you-live",
+            idPrefix: "makingTaxDigital",
+            name: "makingTaxDigital",
             fieldset: {
                 legend: {
                 text: "If you have accountancy software, at least one of them is Making Tax Digital approved.",
@@ -40,23 +41,22 @@
             },
             items: [
                 {
-                value: "Yes",
-                text: "Yes"
+                value: "yes",
+                text: "Yes",
+                checked: makingTaxDigital === 'yes'
                 },
                 {
-                value: "No",
-                text: "No"
+                value: "no",
+                text: "No",
+                checked: makingTaxDigital === 'no'
                 }
-            ]
+            ],
+            errorMessage: errorMap['makingTaxDigital'] and {
+                  text: errorMap['makingTaxDigital']
+              }
             }) }}
-        </fieldset>
-        <br>
-          {# {{ govukButton({ text: "Continue" }) }} #}
-          <button class="govuk-button" data-module="govuk-button" onclick="location.replace('http://localhost:3001/eligibility/mtd-warning')">
-            Continue
-          </button>
-        </div>
-      {# </form> #}
+          {{ govukButton({ text: "Continue" }) }}
+      </form>
     </div>
   </div>
 {% endblock %}

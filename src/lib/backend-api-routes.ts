@@ -5,6 +5,12 @@ export const API_ROUTE = {
   ELIGIBILITY: {
     CYBER_SECURITY: '/eligibility/validate-cyber-security',
     ACCESSIBILITY: '/eligibility/validate-accessibility',
+    ONLINE_PURCHASE: '/eligibility/validate-online-purchase',
+    CATEGORY: '/eligibility/validate-category',
+    MAKING_TAX_DIGITAL: '/eligibility/validate-making-tax-digital',
+    MTD_WARNING: '/eligibility/validate-mtd-warning',
+    RATINGS: '/eligibility/validate-ratings',
+    ELIGIBILITY_COMPLETE: '/eligibility/validate-eligibility-complete',
   },
 };
 

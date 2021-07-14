@@ -40,7 +40,12 @@ declare module 'express-session' {
     };
     eligibility: {
       cyberSecurity: boolean;
-      accessibility:boolean;
+      accessibility: boolean;
+      onlinePurchase: boolean;
+      category: boolean;
+      makingTaxDigital: boolean;
+      mtdWarning: boolean;
+      ratings: boolean;
     };
   }
 }
@@ -62,7 +67,6 @@ export type ValidateEmailSuccessResponse = SuccessResponse & {
   };
 };
 
-
 export type ValidateAccessibilitySuccessResponse = SuccessResponse & {
   data: {
     accessibility: boolean;
@@ -72,6 +76,42 @@ export type ValidateAccessibilitySuccessResponse = SuccessResponse & {
 export type ValidateCyberSecuritySuccessResponse = SuccessResponse & {
   data: {
     cyberSecurity: boolean;
+  };
+};
+
+export type ValidateOnlinePurchaseSuccessResponse = SuccessResponse & {
+  data: {
+    onlinePurchase: boolean;
+  };
+};
+
+export type ValidateCategorySuccessResponse = SuccessResponse & {
+  data: {
+    category: boolean;
+  };
+};
+
+export type ValidateMakingTaxDigitalSuccessResponse = SuccessResponse & {
+  data: {
+    makingTaxDigital: boolean;
+  };
+};
+
+export type ValidateMtdWarningSuccessResponse = SuccessResponse & {
+  data: {
+    mtdWarning: boolean;
+  };
+};
+
+export type ValidateRatingsSuccessResponse = SuccessResponse & {
+  data: {
+    ratings: boolean;
+  };
+};
+
+export type ValidateEligibilityCompleteSuccessResponse = SuccessResponse & {
+  data: {
+    eligibilityComplete: boolean;
   };
 };
 

@@ -35,11 +35,13 @@
                     items: [
                         {
                             value: "yes",
-                            text: "Yes"
+                            text: "Yes",
+                            checked: accessibility === 'yes'
                         },
                         {
                             value: "no",
-                            text: "No"
+                            text: "No",
+                            checked: accessibility === 'no'
                         }
                     ],
                     errorMessage: errorMap['accessibility'] and {

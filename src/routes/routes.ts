@@ -7,6 +7,11 @@ export const ROUTES = {
     ACCESSIBILITY: '/eligibility/accessibility',
     CYBER_SECURITY: '/eligibility/cyber-security',
     ONLINE_PURCHASE: '/eligibility/online-purchase',
+    CATEGORY: '/eligibility/category',
+    MAKING_TAX_DIGITAL: '/eligibility/making-tax-digital',
+    MTD_WARNING: '/eligibility/mtd-warning',
+    RATINGS: '/eligibility/ratings',
+    ELIGIBILITY_COMPLETE: '/eligibility/eligibility-complete',
     DROP_OUT: '/eligibility/drop-out',
   },
 };
