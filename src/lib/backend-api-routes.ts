@@ -4,6 +4,7 @@ export const API_ROUTE = {
   },
   ELIGIBILITY: {
     CYBER_SECURITY: '/eligibility/validate-cyber-security',
+    ACCESSIBILITY: '/eligibility/validate-accessibility',
   },
 };
 

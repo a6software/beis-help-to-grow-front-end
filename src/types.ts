@@ -40,6 +40,7 @@ declare module 'express-session' {
     };
     eligibility: {
       cyberSecurity: boolean;
+      accessibility:boolean;
     };
   }
 }
@@ -58,6 +59,13 @@ export type SuccessResponse = {
 export type ValidateEmailSuccessResponse = SuccessResponse & {
   data: {
     email: Email;
+  };
+};
+
+
+export type ValidateAccessibilitySuccessResponse = SuccessResponse & {
+  data: {
+    accessibility: boolean;
   };
 };
 
