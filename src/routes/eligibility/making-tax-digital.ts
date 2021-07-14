@@ -3,7 +3,6 @@ import makingTaxDigitalController from '../../controllers/eligibility/making-tax
 
 const router = express.Router();
 
-router.get('/', makingTaxDigitalController.getMakingTaxDigital,
-);
+router.get('/', makingTaxDigitalController.getMakingTaxDigital);
 
 export default router;

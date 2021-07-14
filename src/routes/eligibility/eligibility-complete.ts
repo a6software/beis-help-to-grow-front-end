@@ -3,7 +3,6 @@ import eligibilityCompelteController from '../../controllers/eligibility/eligibi
 
 const router = express.Router();
 
-router.get('/', eligibilityCompelteController.getEligibilityComplete,
-);
+router.get('/', eligibilityCompelteController.getEligibilityComplete);
 
 export default router;
