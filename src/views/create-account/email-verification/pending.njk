@@ -1,0 +1,40 @@
+{% extends "layout/base.njk" %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+
+{% block pageTitle %}
+    Verification Link
+{% endblock %}
+
+{% set cannot_see_email_list %}
+    <ul class="govuk-list">
+        <li>
+            <a class="govuk-link" href="{{ ROUTES.CREATE_ACCOUNT.YOUR_DETAILS }}">Try entering email again</a>
+        </li>
+        <li>
+            If you think there is a problem, <a class="govuk-link" href="#">contact BEIS</a>
+        </li>
+    </ul>
+{% endset %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+            <h1 class="govuk-heading-l">Check your work email</h1>
+
+            <p class="govuk-body-m">
+                A verification link has been sent to <b>{{ workEmailAddress }}</b>. Go check your inbox and click
+                on the link to verify this email address.
+            </p>
+
+            {{ govukDetails({
+                summaryText: "I still can't see the email",
+                html: cannot_see_email_list
+            }) }}
+
+        </div>
+    </div>
+
+{% endblock %}

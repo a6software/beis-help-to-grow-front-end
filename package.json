@@ -12,7 +12,7 @@
     "build:sass": "node-sass src/sass/main.scss src/public/stylesheets/main.css --style=compressed --load-path=./ --no-source-map",
     "lint": "tsc --noEmit && eslint \"**/*.{js,ts}\" --quiet --fix",
     "start": "node dist/app.js",
-    "start:dev": "nodemon src/app.ts | pino-pretty",
+    "start:dev": "nodemon src/app.ts | pino-pretty --colorize --singleLine",
     "test": "jest",
     "test:watch": "jest --watchAll --runInBand --coverage"
   },

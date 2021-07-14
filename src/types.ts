@@ -2,6 +2,7 @@ import { Express } from 'express';
 import { MongoDBSessionOptions } from 'connect-mongodb-session';
 
 export type Email = string;
+export type EmailVerificationCode = string;
 export type JWT = string;
 
 export type ApplicationConfiguration = {
@@ -40,16 +41,25 @@ export type NunjucksConfigurationOptions = {
   isDev: boolean;
 };
 
+export type YourDetails = {
+  workEmailAddress: Email;
+  companyWebsiteUrl: string;
+  fullName: string;
+  phoneNumber: string;
+  positionInCompany: string;
+};
+
+export type TermsAndConditions = {
+  consentToTermsAndConditions: boolean;
+  consentToDataSharing: boolean;
+};
+
 declare module 'express-session' {
   export interface SessionData {
     previousRequest: { [key: string]: any };
-    account: {
-      companyWebsiteUrl: string;
-      fullName: string;
-      phoneNumber: string;
-      positionInCompany: string;
-      workEmailAddress: Email;
-    };
+    yourDetails: YourDetails;
+    termsAndConditions: TermsAndConditions;
+    emailVerificationCode: EmailVerificationCode;
   }
 }
 
@@ -75,10 +85,12 @@ export type SignInSuccessResponse = SuccessResponse & {
   };
 };
 
-export type ValidateEmailSuccessResponse = SuccessResponse & {
-  data: {
-    email: Email;
-  };
+export type ValidateYourDetailsSuccessResponse = SuccessResponse & {
+  data: YourDetails;
+};
+
+export type ValidateTermsAndConditionsSuccessResponse = SuccessResponse & {
+  data: TermsAndConditions;
 };
 
 export type ValidationError = {

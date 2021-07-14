@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { ROUTES } from '../../routes/routes';
-import { validateYourDetails } from '../../service/validation/validate-your-details';
+import { validateYourDetails } from '../../validation/create-account/validate-your-details';
 import { Email } from '../../types';
 
 const getYourDetails = (req: Request, res: Response) => {
@@ -25,8 +25,8 @@ const postYourDetails = async (req: Request, res: Response) => {
   const { companyWebsiteUrl, fullName, phoneNumber, positionInCompany, workEmailAddress } =
     req.body;
 
-  req.session.account = {
-    ...req.session.account,
+  req.session.yourDetails = {
+    ...req.session.yourDetails,
     companyWebsiteUrl,
     fullName,
     phoneNumber,
@@ -43,6 +43,7 @@ const postYourDetails = async (req: Request, res: Response) => {
       positionInCompany,
       workEmailAddress,
     });
+    console.log(`response`, response);
   } catch (e) {
     req.log.error(e);
   } finally {
@@ -53,15 +54,6 @@ const postYourDetails = async (req: Request, res: Response) => {
     res.redirect(ROUTES.CREATE_ACCOUNT.YOUR_DETAILS);
     return;
   }
-
-  req.session.account = {
-    ...req.session.account,
-    companyWebsiteUrl,
-    fullName,
-    phoneNumber,
-    positionInCompany,
-    workEmailAddress,
-  };
 
   res.redirect(ROUTES.CREATE_ACCOUNT.TERMS_AND_CONDITIONS);
 };

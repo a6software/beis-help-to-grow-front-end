@@ -1,7 +1,7 @@
 import { AxiosResponse } from 'axios';
 import { getBackEndApiConnection } from '../../lib/backend-api-connection';
 import API_ROUTE from '../../lib/backend-api-routes';
-import { Email, ErrorResponse, ValidateEmailSuccessResponse } from '../../types';
+import { Email, ErrorResponse, ValidateYourDetailsSuccessResponse } from '../../types';
 
 type ValidateYourDetails = {
   workEmailAddress: Email;
@@ -17,7 +17,9 @@ export const validateYourDetails = async ({
   phoneNumber,
   positionInCompany,
   workEmailAddress,
-}: ValidateYourDetails): Promise<AxiosResponse<ValidateEmailSuccessResponse | ErrorResponse>> =>
+}: ValidateYourDetails): Promise<
+  AxiosResponse<ValidateYourDetailsSuccessResponse | ErrorResponse>
+> =>
   getBackEndApiConnection().post(API_ROUTE.CREATE_ACCOUNT.VALIDATE_YOUR_DETAILS, {
     companyWebsiteUrl,
     fullName,

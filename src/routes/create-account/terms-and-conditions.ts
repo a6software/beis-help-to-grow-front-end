@@ -4,5 +4,6 @@ import termsAndConditionsController from '../../controllers/create-account/terms
 const router = express.Router();
 
 router.get('/', termsAndConditionsController.getTermsAndConditions);
+router.post('/', termsAndConditionsController.postTermsAndConditions);
 
 export default router;
