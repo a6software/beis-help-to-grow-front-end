@@ -3,8 +3,6 @@ import { ROUTES } from '../../routes/routes';
 import { validateCyberSecurity } from '../../validation/validate-cyber-security';
 
 const getCyberSecurity = (req: Request, res: Response) => {
-  console.log('XXXXXXXX', req.session.eligibility);
-
   res.render('eligibility/cyber-security', {
     errorMap: res.locals?.errorMap || {},
     cyberSecurity: req.session?.eligibility?.cyberSecurity,
@@ -22,7 +20,6 @@ const postCyberSecurity = async (req: Request, res: Response) => {
   let response;
   try {
     response = await validateCyberSecurity(cyberSecurity);
-    console.log('response', { response });
   } catch (e) {
     req.log.error(e);
   } finally {
