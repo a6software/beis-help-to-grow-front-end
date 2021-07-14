@@ -2,8 +2,17 @@ import { Express } from 'express';
 import nunjucks from 'nunjucks';
 import path from 'path';
 import setup from '../../../../src/lib/nunjucks/setup';
+import { validationErrorsToGovUkErrorList } from '../../../../src/lib/validation-errors-to-gov-uk-error-list';
 
-jest.mock('nunjucks');
+const mockAddFilter = jest.fn();
+
+jest.mock('nunjucks', () => {
+  return {
+    configure: jest.fn(() => ({
+      addFilter: mockAddFilter,
+    })),
+  };
+});
 
 describe('lib/nunjucks/setup', () => {
   it('should setup nunjucks', () => {
@@ -18,6 +27,11 @@ describe('lib/nunjucks/setup', () => {
         path.join(__dirname, '..', '..', '..', '..', 'src', 'views'),
       ],
       { autoescape: true, express: mockApp, noCache: true, watch: isDev },
+    );
+
+    expect(mockAddFilter).toHaveBeenCalledWith(
+      'validationErrorsToGovUkErrorList',
+      validationErrorsToGovUkErrorList,
     );
   });
 });

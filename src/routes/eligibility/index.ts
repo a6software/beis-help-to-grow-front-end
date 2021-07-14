@@ -29,5 +29,4 @@ router.use('/online-purchase', onlinePurchaseRouter);
 router.use('/physical-media', physicalMediaRouter);
 router.use('/ratings', ratingsRouter);
 
-
 export default router;
