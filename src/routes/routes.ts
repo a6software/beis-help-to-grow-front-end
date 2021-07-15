@@ -12,6 +12,8 @@ export const ROUTES = {
     MTD_WARNING: '/eligibility/mtd-warning',
     RATINGS: '/eligibility/ratings',
     ELIGIBILITY_COMPLETE: '/eligibility/eligibility-complete',
+    PHYSICAL_MEDIA: '/eligibility/physical-media',
+    GDPR: '/eligibility/gdpr',
     DROP_OUT: '/eligibility/drop-out',
   },
 };

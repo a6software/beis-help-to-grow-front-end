@@ -11,6 +11,8 @@ export const API_ROUTE = {
     MTD_WARNING: '/eligibility/validate-mtd-warning',
     RATINGS: '/eligibility/validate-ratings',
     ELIGIBILITY_COMPLETE: '/eligibility/validate-eligibility-complete',
+    PHYSICAL_MEDIA: '/eligibility/validate-physical-media',
+    GDPR: '/eligibility/validate-gdpr',
   },
 };
 

@@ -46,6 +46,8 @@ declare module 'express-session' {
       makingTaxDigital: boolean;
       mtdWarning: boolean;
       ratings: boolean;
+      gdpr: boolean;
+      physicalMedia: boolean;
     };
   }
 }
@@ -114,6 +116,19 @@ export type ValidateEligibilityCompleteSuccessResponse = SuccessResponse & {
     eligibilityComplete: boolean;
   };
 };
+
+export type ValidateGdprSuccessResponse = SuccessResponse & {
+  data: {
+    gdpr: boolean;
+  };
+};
+
+export type ValidatePhysicalMediaSuccessResponse = SuccessResponse & {
+  data: {
+    physicalMedia: boolean;
+  };
+};
+
 
 export type ValidationError = {
   message: string;
