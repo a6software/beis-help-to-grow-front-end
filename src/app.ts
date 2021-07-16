@@ -3,6 +3,7 @@ import path from 'path';
 import pinoHttp from 'pino-http';
 import session from 'express-session';
 import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
 import setupNunjucks from './lib/nunjucks/setup';
 import requestIdGenerator from './lib/request-id-generator';
 import routes from './routes';
@@ -34,6 +35,7 @@ setupNunjucks({
   isDev,
 });
 
+app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 

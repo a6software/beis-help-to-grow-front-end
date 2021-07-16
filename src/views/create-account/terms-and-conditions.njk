@@ -5,56 +5,57 @@
 {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 
 {% block pageTitle %}
-    T&Cs + Privacy consent
+    {% if errorMap | length %}Errors: {% endif %}T&Cs + Privacy consent
 {% endblock %}
 
 {% block content %}
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-            <form class="form" action="" method="post">
+            <form class="form" action="" method="post" novalidate>
 
-                {{ govukErrorSummary({
-                    titleText: "There is a problem",
-                    errorList: [
+                {% if errorMap | length %}
+                    {{ govukErrorSummary({
+                        titleText: "There is a problem",
+                        errorList: errorMap | validationErrorsToGovUkErrorList
+                    }) }}
+                {% endif %}
+
+                <h1 class="govuk-heading-l">We need to verify your email</h1>
+
+                <p class="govuk-body-m">Before we send you an email to verify name@email.com, you will need to
+                    read and consent to the <a href="#" class="govuk-link">T&Cs</a> and <a href="#"
+                                                                                           class="govuk-link">privacy
+                        policy</a>.</p>
+
+                {{ govukCheckboxes({
+                    idPrefix: "terms-and-conditions",
+                    name: "termsAndConditions",
+                    items: [
                         {
-                            text: "You need to accept the consent before continuing",
-                            href: ""
+                            value: true,
+                            name: "consentToTermsAndConditions",
+                            text: "I consent to T&Cs",
+                            checked: consentToTermsAndConditions
+                        },
+                        {
+                            value: true,
+                            name: "consentToDataSharing",
+                            text: "I consent to my details being shared with any Government department and...",
+                            checked: consentToDataSharing
                         }
                     ]
                 }) }}
 
-                <div class="govuk-form-group">
-                    <fieldset class="govuk-fieldset">
-                        <legend>
-                            <h1 class="govuk-heading-l">We need to verify your email</h1>
-                        </legend>
-                        <p class="govuk-body-m">Before we send you an email to verify name@email.com, you will need to
-                            read and consent to the <a href="#" class="govuk-link">T&Cs</a> and <a href="#"
-                                                                                                   class="govuk-link">privacy
-                                policy</a>.</p>
-                        <br>
-                        {{ govukCheckboxes({
-                            idPrefix: "waste",
-                            name: "waste",
-                            items: [
-                                {
-                                    value: "consent",
-                                    text: "I consent to my details being shared with any Government department and..."
-                                }
-                            ]
-                        }) }}
-                        <br>
-                        <p class="govuk-body-m"><b>My email is not correct.</b></p>
-                        <a href="#" class="govuk-link">change email</a>
-                    </fieldset>
-                    <br>
+                <div class="govuk-!-padding-bottom-6">
+                    <h3 class="govuk-heading-s">My email is not correct</h3>
 
-                    {{ govukButton({
-                        href: '/create-account/verification',
-                        text: "Continue"
-                    }) }}
-
+                    <a href="{{ ROUTES.CREATE_ACCOUNT.YOUR_DETAILS }}" class="govuk-link">Change email</a>
                 </div>
+
+                {{ govukButton({
+                    text: "Continue"
+                }) }}
+
             </form>
         </div>
     </div>

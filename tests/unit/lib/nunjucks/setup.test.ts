@@ -3,13 +3,16 @@ import nunjucks from 'nunjucks';
 import path from 'path';
 import setup from '../../../../src/lib/nunjucks/setup';
 import { validationErrorsToGovUkErrorList } from '../../../../src/lib/validation-errors-to-gov-uk-error-list';
+import { ROUTES } from '../../../../src/routes/routes';
 
 const mockAddFilter = jest.fn();
+const mockAddGlobal = jest.fn();
 
 jest.mock('nunjucks', () => {
   return {
     configure: jest.fn(() => ({
       addFilter: mockAddFilter,
+      addGlobal: mockAddGlobal,
     })),
   };
 });
@@ -33,5 +36,7 @@ describe('lib/nunjucks/setup', () => {
       'validationErrorsToGovUkErrorList',
       validationErrorsToGovUkErrorList,
     );
+
+    expect(mockAddGlobal).toHaveBeenCalledWith('ROUTES', ROUTES);
   });
 });

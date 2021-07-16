@@ -9,7 +9,7 @@ export const previousRequestFailureToResLocalsErrorMap = (
   const errorMap: { [key: string]: ValidationError } = {};
 
   if (req.session?.previousRequest?.success === false) {
-    req.session.previousRequest.data.forEach((error: any) => {
+    req.session.previousRequest.data.errors.forEach((error: any) => {
       errorMap[error.context.key as string] = error.message;
     });
   }
