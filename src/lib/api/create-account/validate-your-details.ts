@@ -1,7 +1,7 @@
 import { AxiosResponse } from 'axios';
-import { getBackEndApiConnection } from '../../lib/backend-api-connection';
-import API_ROUTE from '../../lib/backend-api-routes';
-import { Email, ErrorResponse, ValidateYourDetailsSuccessResponse } from '../../types';
+import { getBackEndApiConnection } from '../backend-api-connection';
+import API_ROUTE from '../backend-api-routes';
+import { Email, ErrorResponse, ValidateYourDetailsSuccessResponse } from '../../../types';
 
 type ValidateYourDetails = {
   workEmailAddress: Email;

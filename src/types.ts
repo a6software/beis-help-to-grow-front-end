@@ -4,6 +4,7 @@ import { MongoDBSessionOptions } from 'connect-mongodb-session';
 export type Email = string;
 export type EmailVerificationCode = string;
 export type JWT = string;
+export type PlainTextPassword = string;
 
 export type ApplicationConfiguration = {
   api: {
@@ -84,6 +85,8 @@ export type SignInSuccessResponse = SuccessResponse & {
     user: UserDetails;
   };
 };
+
+export type ValidateRepeatedPasswordSuccessResponse = SuccessResponse;
 
 export type ValidateYourDetailsSuccessResponse = SuccessResponse & {
   data: YourDetails;

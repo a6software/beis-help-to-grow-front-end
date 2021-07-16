@@ -1,7 +1,7 @@
 import { AxiosResponse } from 'axios';
 import { getBackEndApiConnection } from './backend-api-connection';
 import API_ROUTE from './backend-api-routes';
-import { Email, ErrorResponse, SignInSuccessResponse } from '../types';
+import { Email, ErrorResponse, SignInSuccessResponse } from '../../types';
 
 export const signIn = async (
   email: Email,

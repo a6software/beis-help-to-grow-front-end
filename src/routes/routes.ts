@@ -1,5 +1,6 @@
 export const ROUTES = {
   CREATE_ACCOUNT: {
+    ACCOUNT_CREATED: '/create-account/account-created',
     EMAIL_VERIFICATION: {
       CODE_NOT_RECOGNISED: '/create-account/email-verification/code-not-recognised',
       INVALID_SESSION: '/create-account/email-verification/invalid-session',

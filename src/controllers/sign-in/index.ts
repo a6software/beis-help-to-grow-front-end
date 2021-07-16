@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { ROUTES } from '../../routes/routes';
-import { signIn } from '../../lib/sign-in';
+import { signIn } from '../../lib/api/sign-in';
 import config from '../../config';
 import { COOKIE_TOKEN_KEY } from '../../constants';
 

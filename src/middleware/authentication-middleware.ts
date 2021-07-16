@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { validateJwt } from '../lib/validate-jwt';
+import { validateJwt } from '../lib/api/validate-jwt';
 import { COOKIE_TOKEN_KEY } from '../constants';
 
 export const authentication = async (req: Request, res: Response, next: NextFunction) => {

@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
 import API_ROUTE from './backend-api-routes';
-import { ErrorResponse, JWT, SuccessResponse } from '../types';
+import { ErrorResponse, JWT, SuccessResponse } from '../../types';
 import { getAuthorizedBackEndApiConnection } from './backend-api-connection';
 
 export const validateJwt = async (

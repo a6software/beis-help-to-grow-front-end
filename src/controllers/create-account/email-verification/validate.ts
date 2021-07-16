@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { ROUTES } from '../../../routes/routes';
-import { validateEmailVerificationCode } from '../../../lib/validate-email-verification-code';
+import { validateEmailVerificationCode } from '../../../lib/api/create-account/validate-email-verification-code';
 
 const validate = async (req: Request, res: Response) => {
   const { emailVerificationCode } = req.params;

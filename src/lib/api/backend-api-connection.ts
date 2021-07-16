@@ -1,6 +1,6 @@
 import axios from 'axios';
-import config from '../config';
-import { BackEndApiConnectionOptions, JWT } from '../types';
+import config from '../../config';
+import { BackEndApiConnectionOptions, JWT } from '../../types';
 
 const defaultBackEndApiConnectionOptions: BackEndApiConnectionOptions = {
   baseUrl: config.api.backend.baseUrl,

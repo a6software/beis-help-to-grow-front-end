@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { requestEmailVerificationCode } from '../lib/request-email-verification-code';
+import { requestEmailVerificationCode } from '../lib/api/request-email-verification-code';
 
 export const requestEmailVerificationCodeMiddleware = async (
   req: Request,

@@ -1,11 +1,11 @@
 import { AxiosResponse } from 'axios';
-import { getBackEndApiConnection } from '../../lib/backend-api-connection';
-import API_ROUTE from '../../lib/backend-api-routes';
+import { getBackEndApiConnection } from '../backend-api-connection';
+import API_ROUTE from '../backend-api-routes';
 import {
   ErrorResponse,
   TermsAndConditions,
   ValidateTermsAndConditionsSuccessResponse,
-} from '../../types';
+} from '../../../types';
 
 export const validateTermsAndConditions = async ({
   consentToDataSharing,

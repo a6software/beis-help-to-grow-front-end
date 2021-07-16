@@ -1,0 +1,36 @@
+{% extends "layout/base.njk" %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+
+{% block pageTitle %}
+    {% if errorMap | length %}Errors: {% endif %}Set Password
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form class="form" action="" method="post">
+
+                {% block formErrors %}
+                    {% if errorMap | length %}
+                        {{ govukErrorSummary({
+                            titleText: "There is a problem",
+                            errorList: errorMap | validationErrorsToGovUkErrorList
+                        }) }}
+                    {% endif %}
+                {% endblock %}
+
+                {% block formContent %}{% endblock %}
+
+                {% block formButtons %}
+                    {{ govukButton({
+                        text: "Continue"
+                    }) }}
+                {% endblock %}
+
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

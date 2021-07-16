@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { validateTermsAndConditions } from '../../validation/create-account/validate-terms-and-conditions';
+import { validateTermsAndConditions } from '../../lib/api/create-account/validate-terms-and-conditions';
 import { ROUTES } from '../../routes/routes';
 
 const getTermsAndConditions = (req: Request, res: Response) => {

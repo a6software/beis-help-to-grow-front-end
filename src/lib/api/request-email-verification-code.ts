@@ -1,7 +1,7 @@
 import { AxiosResponse } from 'axios';
 import API_ROUTE from './backend-api-routes';
 import { getBackEndApiConnection } from './backend-api-connection';
-import { Email, ErrorResponse, SuccessResponse } from '../types';
+import { Email, ErrorResponse, SuccessResponse } from '../../types';
 
 export const requestEmailVerificationCode = async (
   email: Email,

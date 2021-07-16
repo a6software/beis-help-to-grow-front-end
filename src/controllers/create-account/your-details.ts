@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { ROUTES } from '../../routes/routes';
-import { validateYourDetails } from '../../validation/create-account/validate-your-details';
+import { validateYourDetails } from '../../lib/api/create-account/validate-your-details';
 import { Email } from '../../types';
 
 const getYourDetails = (req: Request, res: Response) => {
