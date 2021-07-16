@@ -1,33 +1,22 @@
 {% extends "layout/base.njk" %}
 
 {% from "govuk/components/button/macro.njk" import govukButton %}
-{% from "govuk/components/radios/macro.njk" import govukRadios %}
 {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 
 {% block pageTitle %}
-    MTD Warning
+    {% if errorMap | length %}Errors: {% endif %}MTD Warning
 {% endblock %}
 
 {% block content %}
-<div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
-            <div class="govuk-form-group">
-                <fieldset class="govuk-fieldset">
-                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                        <h1 class="govuk-fieldset__heading">
-                            Only Making Tax Digital approved accountancy software can be on the HtG scheme.
-                        </h1>
-                    </legend>
-
-                    <div class="govuk-form-group">
-                        <p>You can continue with checking your eligibility if you have additional software that is not an accountancy software. Otherwise you should not continue.</p>
-                    </div>
-                </fieldset>
-                {# {{ govukButton({ text: "Continue" }) }} #}
-          <button class="govuk-button" data-module="govuk-button" onclick="location.replace('http://localhost:3001/eligibility/ratings')">
-            Continue
-          </button>
-        </div>
-        </div>
+    <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form class="form" action="" method="post" novalidate>
+            <h1 class="govuk-fieldset__heading">
+            Only Making Tax Digital approved accountancy software can be on the HtG scheme.
+            </h1>
+            <p>You can continue with checking your eligibility if you have additional software that is not an accountancy software. Otherwise you should not continue.</p>
+            {{ govukButton({ text: "Continue" }) }}
+        </form>
+    </div>
     </div>
 {% endblock %}

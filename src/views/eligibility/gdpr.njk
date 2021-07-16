@@ -5,29 +5,30 @@
 {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 
 {% block pageTitle %}
-    GDPR
+    {% if errorMap | length %}Errors: {% endif %}GDPR
 {% endblock %}
 
 {% block content %}
     <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      {# <form class="form" action="" method="post"> #}
+      <form class="form" action="" method="post" novalidate>
 
-      {{ govukErrorSummary({
-          titleText: "There is a problem",
-          errorList: [
-            {
-              text: "Please make a selection",
-              href: ""
-            }
-          ]
-        }) }}
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset">
+            {% if errorMap | length %}
+              {{ govukErrorSummary({
+                  titleText: "There is a problem",
+                  errorList: [
+                      {
+                          text: errorMap['physicalMedia'],
+                          href: "#physicalMedia"
+                      }
+                  ]
+                }) }}
+            {% endif %}
+
             {{ govukRadios({
             classes: "govuk-radios--inline",
-            idPrefix: "where-do-you-live",
-            name: "where-do-you-live",
+            idPrefix: "gdpr",
+            name: "gdpr",
             fieldset: {
                 legend: {
                 text: "Does your company have GDPR policy in place?",
@@ -40,23 +41,22 @@
             },
             items: [
                 {
-                value: "Yes",
-                text: "Yes"
+                value: "yes",
+                text: "Yes",
+                checked: gdpr === 'yes'
                 },
                 {
-                value: "No",
-                text: "No"
+                value: "no",
+                text: "No",
+                checked: gdpr === 'no'
                 }
-            ]
+            ],
+              errorMessage: errorMap['gdpr'] and {
+                  text: errorMap['gdpr']
+              }
             }) }}
-        </fieldset>
-        <br>
-          {# {{ govukButton({ text: "Continue" }) }} #}
-          <button class="govuk-button" data-module="govuk-button" onclick="location.replace('http://localhost:3001/eligibility/physical-media')">
-            Continue
-          </button>
-        </div>
-      {# </form> #}
+          {{ govukButton({ text: "Continue" }) }}
+        </form>
     </div>
   </div>
 {% endblock %}

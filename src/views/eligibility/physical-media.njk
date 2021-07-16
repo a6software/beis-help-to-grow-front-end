@@ -5,58 +5,52 @@
 {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 
 {% block pageTitle %}
-    Physical media
+    {% if errorMap | length %}Errors: {% endif %}Physical media
 {% endblock %}
 
 {% block content %}
     <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      {# <form class="form" action="" method="post"> #}
+      <form class="form" action="" method="post">
 
-      {{ govukErrorSummary({
-          titleText: "There is a problem",
-          errorList: [
-            {
-              text: "Please make a selection",
-              href: ""
-            }
-          ]
-        }) }}
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset">
+          {% if errorMap | length %}
+                {{ govukErrorSummary({
+                    titleText: "There is a problem",
+                    errorList: errorMap | validationErrorsToGovUkErrorList
+                }) }}
+          {% endif %}
             {{ govukRadios({
-            classes: "govuk-radios--inline",
-            idPrefix: "where-do-you-live",
-            name: "where-do-you-live",
-            fieldset: {
-                legend: {
-                text: "Is your software sold only on physical media?",
-                isPageHeading: true,
-                classes: "govuk-fieldset__legend--l"
-                }
-            },
-            hint: {
-              html: "<p>e.g <ol><li>CD</li><li>DVD</li><li>USB drive</li></ol></p>"
-            },
-            items: [
-                {
-                value: "Yes",
-                text: "Yes"
-                },
-                {
-                value: "No",
-                text: "No"
-                }
-            ]
-            }) }}
-        </fieldset>
-        <br>
-          {# {{ govukButton({ text: "Continue" }) }} #}
-          <button class="govuk-button" data-module="govuk-button" onclick="location.replace('http://localhost:3001/eligibility/online-purchase')">
-            Continue
-          </button>
-        </div>
-      {# </form> #}
+              classes: "govuk-radios--inline",
+              idPrefix: "physicalMedia",
+              name: "physicalMedia",
+              fieldset: {
+                  legend: {
+                  text: "Is your software sold only on physical media?",
+                  isPageHeading: true,
+                  classes: "govuk-fieldset__legend--l"
+                  }
+              },
+              hint: {
+                html: "<p>e.g <ol><li>CD</li><li>DVD</li><li>USB drive</li></ol></p>"
+              },
+              items: [
+                  {
+                  value: "yes",
+                  text: "Yes",
+                  checked: physicalMedia === 'yes'
+                  },
+                  {
+                  value: "no",
+                  text: "No",
+                  checked: physicalMedia === 'no'
+                  }
+              ],
+              errorMessage: errorMap['physicalMedia'] and {
+                  text: errorMap['physicalMedia']
+              }
+              }) }}
+            {{ govukButton({ text: "Continue" }) }}
+        </form>
     </div>
   </div>
 {% endblock %}

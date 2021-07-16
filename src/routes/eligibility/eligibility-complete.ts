@@ -4,5 +4,6 @@ import eligibilityCompelteController from '../../controllers/eligibility/eligibi
 const router = express.Router();
 
 router.get('/', eligibilityCompelteController.getEligibilityComplete);
+router.post('/', eligibilityCompelteController.postEligibilityComplete);
 
 export default router;

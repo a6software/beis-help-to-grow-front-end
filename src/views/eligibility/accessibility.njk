@@ -5,58 +5,53 @@
 {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 
 {% block pageTitle %}
-    Accessibility
+    {% if errorMap | length %}Errors: {% endif %}Accessibility
 {% endblock %}
 
 {% block content %}
     <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      {# <form class="form" action="" method="post"> #}
+        <div class="govuk-grid-column-two-thirds">
+            <form class="form" action="" method="post" novalidate>
 
-      {{ govukErrorSummary({
-          titleText: "There is a problem",
-          errorList: [
-            {
-              text: "Please make a selection",
-              href: ""
-            }
-          ]
-        }) }}
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset">
-            <legend>
-              <h1 class="govuk-heading-l">Does your company meet accessibility standards?</h1>
-            </legend>
-            <br>
-            {{ govukRadios({
-            idPrefix: "where-do-you-live",
-            name: "where-do-you-live",
-            fieldset: {
-                legend: {
-                text: "Copy to say what this is.",
-                isPageHeading: true,
-                classes: "govuk-fieldset__legend--l"
-                }
-            },
-            items: [
-                {
-                value: "Yes",
-                text: "Yes"
-                },
-                {
-                value: "No",
-                text: "No"
-                }
-            ]
-            }) }}
-        </fieldset>
-        <br>
-          {# {{ govukButton({ text: "Continue" }) }} #}
-          <button class="govuk-button" data-module="govuk-button" onclick="location.replace('http://localhost:3001/eligibility/accessibility')">
-            Continue
-          </button>
+                {% if errorMap | length %}
+                    {{ govukErrorSummary({
+                        titleText: "There is a problem",
+                        errorList: errorMap | validationErrorsToGovUkErrorList
+                    }) }}
+                {% endif %}
+
+                <h1 class="govuk-heading-l">Does your company meet accessibility standards?</h1>
+
+                {{ govukRadios({
+                    idPrefix: "accessibility",
+                    name: "accessibility",
+                    fieldset: {
+                        legend: {
+                            text: "Copy to say what this is.",
+                            isPageHeading: true,
+                            classes: "govuk-fieldset__legend--l"
+                        }
+                    },
+                    items: [
+                        {
+                            value: "yes",
+                            text: "Yes",
+                            checked: accessibility === 'yes'
+                        },
+                        {
+                            value: "no",
+                            text: "No",
+                            checked: accessibility === 'no'
+                        }
+                    ],
+                    errorMessage: errorMap['accessibility'] and {
+                        text: errorMap['accessibility']
+                    }
+                }) }}
+
+                {{ govukButton({ text: "Continue" }) }}
+
+            </form>
         </div>
-      {# </form> #}
     </div>
-  </div>
 {% endblock %}

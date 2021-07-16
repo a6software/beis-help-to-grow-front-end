@@ -5,29 +5,29 @@
 {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 
 {% block pageTitle %}
-    Ratings
+    {% if errorMap | length %}Errors: {% endif %}Ratings
 {% endblock %}
 
 {% block content %}
     <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      {# <form class="form" action="" method="post"> #}
+      <form class="form" action="" method="post" novalidate>
 
-      {{ govukErrorSummary({
-          titleText: "There is a problem",
-          errorList: [
-            {
-              text: "Please make a selection",
-              href: ""
-            }
-          ]
-        }) }}
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset">
+        {% if errorMap | length %}
+            {{ govukErrorSummary({
+                titleText: "There is a problem",
+                errorList: [
+                    {
+                        text: errorMap['ratings'],
+                        href: "#ratings"
+                    }
+                ]
+            }) }}
+        {% endif %}
             {{ govukRadios({
             classes: "govuk-radios--inline",
-            idPrefix: "where-do-you-live",
-            name: "where-do-you-live",
+            idPrefix: "ratings",
+            name: "ratings",
             fieldset: {
                 legend: {
                 text: "Can you provide Capterra/G2 ratings for all of your software?",
@@ -40,23 +40,22 @@
             },
             items: [
                 {
-                value: "Yes",
-                text: "Yes"
+                value: "yes",
+                text: "Yes",
+                checked: ratings === 'yes'
                 },
                 {
-                value: "No",
-                text: "No"
+                value: "no",
+                text: "No",
+                checked: ratings === 'no'
                 }
-            ]
+            ],
+            errorMessage: errorMap['ratings'] and {
+                  text: errorMap['ratings']
+              }
             }) }}
-        </fieldset>
-        <br>
-          {# {{ govukButton({ text: "Continue" }) }} #}
-          <button class="govuk-button" data-module="govuk-button" onclick="location.replace('http://localhost:3001/eligibility/eligibility-complete')">
-            Continue
-          </button>
-        </div>
-      {# </form> #}
+          {{ govukButton({ text: "Continue" }) }}
+      </form>
     </div>
   </div>
 {% endblock %}
