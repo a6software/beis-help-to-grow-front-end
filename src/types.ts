@@ -38,6 +38,17 @@ declare module 'express-session' {
     account: {
       email: Email;
     };
+    eligibility: {
+      cyberSecurity: boolean;
+      accessibility: boolean;
+      onlinePurchase: boolean;
+      category: boolean;
+      makingTaxDigital: boolean;
+      mtdWarning: boolean;
+      ratings: boolean;
+      gdpr: boolean;
+      physicalMedia: boolean;
+    };
   }
 }
 
@@ -57,6 +68,67 @@ export type ValidateEmailSuccessResponse = SuccessResponse & {
     email: Email;
   };
 };
+
+export type ValidateAccessibilitySuccessResponse = SuccessResponse & {
+  data: {
+    accessibility: boolean;
+  };
+};
+
+export type ValidateCyberSecuritySuccessResponse = SuccessResponse & {
+  data: {
+    cyberSecurity: boolean;
+  };
+};
+
+export type ValidateOnlinePurchaseSuccessResponse = SuccessResponse & {
+  data: {
+    onlinePurchase: boolean;
+  };
+};
+
+export type ValidateCategorySuccessResponse = SuccessResponse & {
+  data: {
+    category: boolean;
+  };
+};
+
+export type ValidateMakingTaxDigitalSuccessResponse = SuccessResponse & {
+  data: {
+    makingTaxDigital: boolean;
+  };
+};
+
+export type ValidateMtdWarningSuccessResponse = SuccessResponse & {
+  data: {
+    mtdWarning: boolean;
+  };
+};
+
+export type ValidateRatingsSuccessResponse = SuccessResponse & {
+  data: {
+    ratings: boolean;
+  };
+};
+
+export type ValidateEligibilityCompleteSuccessResponse = SuccessResponse & {
+  data: {
+    eligibilityComplete: boolean;
+  };
+};
+
+export type ValidateGdprSuccessResponse = SuccessResponse & {
+  data: {
+    gdpr: boolean;
+  };
+};
+
+export type ValidatePhysicalMediaSuccessResponse = SuccessResponse & {
+  data: {
+    physicalMedia: boolean;
+  };
+};
+
 
 export type ValidationError = {
   message: string;

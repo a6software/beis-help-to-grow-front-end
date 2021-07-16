@@ -5,58 +5,57 @@
 {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 
 {% block pageTitle %}
-    Cyber Security
+    {% if errorMap | length %}Errors: {% endif %}Cyber Security
 {% endblock %}
 
 {% block content %}
     <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      {# <form class="form" action="" method="post"> #}
+        <div class="govuk-grid-column-two-thirds">
+            <form class="form" action="" method="post" novalidate>
 
-      {{ govukErrorSummary({
-          titleText: "There is a problem",
-          errorList: [
-            {
-              text: "Please make a selection",
-              href: ""
-            }
-          ]
-        }) }}
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset">
-            <legend>
-              <h1 class="govuk-heading-l">Does your company have Cyber security certification?</h1>
-            </legend>
-            <br>
-            {{ govukRadios({
-            idPrefix: "where-do-you-live",
-            name: "where-do-you-live",
-            fieldset: {
-                legend: {
-                text: "Copy to say what this is.",
-                isPageHeading: true,
-                classes: "govuk-fieldset__legend--l"
-                }
-            },
-            items: [
-                {
-                value: "Yes",
-                text: "Yes"
-                },
-                {
-                value: "No",
-                text: "No"
-                }
-            ]
-            }) }}
-        </fieldset>
-        <br>
-          {# {{ govukButton({ text: "Continue" }) }} #}
-          <button class="govuk-button" data-module="govuk-button" onclick="location.replace('http://localhost:3001/eligibility/accessibility')">
-            Continue
-          </button>
+                {% if errorMap | length %}
+                    {{ govukErrorSummary({
+                        titleText: "There is a problem",
+                        errorList: [
+                            {
+                                text: errorMap['cyberSecurity'],
+                                href: "#cyber-security"
+                            }
+                        ]
+                    }) }}
+                {% endif %}
+
+                <h1 class="govuk-heading-l">Does your company have Cyber security certification?</h1>
+
+                {{ govukRadios({
+                    idPrefix: "cyber-security",
+                    name: "cyber-security",
+                    fieldset: {
+                        legend: {
+                            text: "Copy to say what this is.",
+                            isPageHeading: true,
+                            classes: "govuk-fieldset__legend--l"
+                        }
+                    },
+                    items: [
+                        {
+                            value: "yes",
+                            text: "Yes",
+                            checked: cyberSecurity === 'yes'
+                        },
+                        {
+                            value: "no",
+                            text: "No",
+                            checked: cyberSecurity === 'no'
+                        }
+                    ],
+                    errorMessage: errorMap['cyberSecurity'] and {
+                        text: errorMap['cyberSecurity']
+                    }
+                }) }}
+
+                {{ govukButton({ text: "Continue" }) }}
+            </form>
         </div>
-      {# </form> #}
     </div>
-  </div>
 {% endblock %}
